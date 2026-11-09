@@ -9,6 +9,15 @@
        </div>
        <p class="rotate">Turn the phone sideways for a bigger synth.</p>
        <p class="hint">
+@@ -50,7 +50,7 @@
+         <span class="keyb"><kbd>Space</kbd> PLAY</span>
+         <span class="keyb">drag or scroll a knob</span>
+         <span class="touch">Play chords with several fingers · drag a knob up / down</span>
+-        <a class="more" href="#guide">How to use it ↓</a>
++        <a class="more" href="../manual/">JAZZY manual ↗</a>
+       </p>
+     </div>
+ 
 @@ -332,6 +332,6 @@
      </div>
    </div>
