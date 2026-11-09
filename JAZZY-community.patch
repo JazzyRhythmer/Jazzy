@@ -4,7 +4,7 @@
  <link rel="stylesheet" href="launch-film.css?v=0a57767d7877">
  <link rel="stylesheet" href="engine-gallery.css?v=guide-cards">
  <script type="module" src="home.mjs?v=pad-and-kick"></script>
-+<link rel="stylesheet" href="community.css?v=f7e9593b11c0">
++<link rel="stylesheet" href="community.css?v=97a26eafcf0a">
 +<script type="module" src="community.mjs?v=514d2fdba091"></script>
  </head>
  <body>
@@ -111,7 +111,7 @@
  <nav class="install-options" aria-label="Installation options"><a href="./">JAZZY INSTALL</a><a href="?mode=stock">RETURN TO V15</a></nav>
 --- /dev/null
 +++ b/community.css
-@@ -0,0 +1,93 @@
+@@ -0,0 +1,98 @@
 +.maker-note {
 +  display: flex;
 +  justify-content: space-between;
@@ -185,18 +185,23 @@
 +  min-height: 48px;
 +  border-radius: 0 !important;
 +}
-+.studio-signup .formkit-form .formkit-input {
++.studio-signup #studio-notes-form .formkit-input {
 +  background: var(--ink) !important;
 +  color: var(--bg) !important;
 +  font-size: 16px !important;
 +}
-+.studio-signup .formkit-form .formkit-submit {
++.studio-signup #studio-notes-form .formkit-submit {
 +  background: var(--accent) !important;
 +  color: var(--bg) !important;
 +  font: 12px var(--mono) !important;
 +  font-weight: bold !important;
 +}
 +.studio-signup .formkit-form .formkit-submit span { padding-inline: 15px !important; }
++.studio-signup #studio-notes-form .formkit-submit:focus-visible {
++  outline: 2px solid var(--accent);
++  outline-offset: 4px;
++}
++.studio-signup .formkit-powered-by-convertkit[data-variant="dark"] { filter: invert(1); }
 +.studio-signup .formkit-powered-by-convertkit-container { margin-top: 12px !important; }
 +.studio-notes-fine, .studio-notes-fallback { font: 11px/1.7 var(--mono); }
 +@media (max-width: 760px) {
