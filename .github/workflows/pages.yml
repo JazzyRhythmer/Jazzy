@@ -71,7 +71,20 @@ jobs:
           cp JAZZY-launch-daybreak.mp4 _site/assets/jazzy-launch.mp4
           sed -i 's@assets/jazzy-launch\.mp4"@assets/jazzy-launch.mp4?v=daybreak-circuit"@g' _site/index.html
           grep -F 'src="assets/jazzy-launch.mp4?v=daybreak-circuit"' _site/index.html
+          curl --fail --silent --show-error --retry 3 -o JAZZY-audio-20261110.1.tar.gz https://raw.githubusercontent.com/JazzyRhythmer/Rhythmer/02783081455a0f688f4206743578c290321f9bfe/JAZZY-audio-20261110.1.tar.gz
+          echo 'e6114688562221db07f26d2dd1d65ca97717dc7498f03eaa0c9e690b14c2556a  JAZZY-audio-20261110.1.tar.gz' | sha256sum -c -
+          mkdir _audio_update
+          tar -xzf JAZZY-audio-20261110.1.tar.gz -C _audio_update
+          cp -a _audio_update/site/. _site/
+          cp -a _audio_update/source/. "_source/$release_tree/"
+          audio_source=JAZZY-0.1.0-beta.1-20261110.1-source.tar.gz
+          tar --sort=name --mtime='UTC 2026-11-10' --owner=0 --group=0 --numeric-owner -C _source -cf - "$release_tree" | gzip -n > "_site/downloads/$audio_source"
+          grep -F 'href="../downloads/JAZZY-0.1.0-beta.1-20261110.1.fwsc"' _site/installer/index.html
+          grep -F 'href="../downloads/JAZZY-0.1.0-beta.1-20261110.1-source.tar.gz"' _site/installer/index.html
+          grep -F 'WEB PLAY · BUILD 20261110.1' _site/emulator/index.html
           cd _site/downloads
+          echo '10325053d16f561d6f5194c54e8a92750eb0947fdfb32326ee2fb7b380ce9fea  JAZZY-0.1.0-beta.1-20261110.1.fwsc' >> SHA256SUMS.txt
+          sha256sum "$audio_source" >> SHA256SUMS.txt
           echo '5042f4351e17a6b9222e4e7f96845fab5d9323f249a93e06a82a8b511bdbe51c  JAZZY-0.1.0-beta.1-20261109.2.fwsc' >> SHA256SUMS.txt
           echo '84899dae54d489a1afa827ec01647260291cd08678f9f94a9479ab9324386277  JAZZY-0.1.0-beta.1-20261109.3.fwsc' >> SHA256SUMS.txt
           sha256sum "$source_file" "$fixes_source" "$sidechain_source" >> SHA256SUMS.txt
