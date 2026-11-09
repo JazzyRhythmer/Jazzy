@@ -2,7 +2,7 @@ name: Deploy JAZZY website
 on:
   push:
     branches: [main]
-    paths: ['JAZZY-*-source.tar.gz', 'JAZZY-web-pad.tar.gz', 'JAZZY-web-launch-film.tar.gz', 'JAZZY-web-companion-and-installer.tar.gz.b64', '.github/workflows/pages.yml']
+    paths: ['JAZZY-*-source.tar.gz', 'JAZZY-web-pad.tar.gz', 'JAZZY-web-launch-film.tar.gz', 'JAZZY-web-companion-and-installer.tar.gz.b64', 'JAZZY-preset-refresh-20261109.tar.gz.*.b64', '.github/workflows/pages.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -29,8 +29,23 @@ jobs:
           base64 --decode JAZZY-web-companion-and-installer.tar.gz.b64 > JAZZY-web-companion-and-installer.tar.gz
           echo '0ae2dbffea9a18dcc0e8610a3308b460119660af10d713b1b1885677d2edc1e1  JAZZY-web-companion-and-installer.tar.gz' | sha256sum -c -
           tar -xzf JAZZY-web-companion-and-installer.tar.gz -C _site
-          grep -F 'href="../downloads/JAZZY-0.1.0-beta.1.fwsc"' _site/installer/index.html
+          cat JAZZY-preset-refresh-20261109.tar.gz.{01,02,03,04,05,06}.b64 | base64 --decode > JAZZY-preset-refresh-20261109.tar.gz
+          echo '770e6d68118230c53b41f3dedf73d45ca54e9be5907161b2e3efd708a202f609  JAZZY-preset-refresh-20261109.tar.gz' | sha256sum -c -
+          mkdir _preset_refresh
+          tar -xzf JAZZY-preset-refresh-20261109.tar.gz -C _preset_refresh
+          cp -a _preset_refresh/site/. _site/
+          curl --fail --silent --show-error --retry 3 -o _site/emulator/fm1_web.wasm https://raw.githubusercontent.com/JazzyRhythmer/Rhythmer/5aaa010c59ba0c6b81c4423cbe310997c880f3bc/emulator/fm1_web.wasm
+          echo '5e9cea87026f03672380cacfd4b198dad6c74a975a7d307826d3330f86bedd41  _site/emulator/fm1_web.wasm' | sha256sum -c -
+          release_tree=Jazzy-0.1.0-beta.1
+          mkdir _source
+          tar -xzf JAZZY-0.1.0-beta.1-source.tar.gz -C _source --exclude="$release_tree/www"
+          cp -a _preset_refresh/source/. "_source/$release_tree/"
+          source_file=JAZZY-0.1.0-beta.1-20261109-source.tar.gz
+          tar --sort=name --mtime='UTC 2026-11-09' --owner=0 --group=0 --numeric-owner -C _source -cf - "$release_tree" | gzip -n > "_site/downloads/$source_file"
+          grep -F 'href="../downloads/JAZZY-0.1.0-beta.1-20261109.fwsc"' _site/installer/index.html
+          grep -F 'href="../downloads/JAZZY-0.1.0-beta.1-20261109-source.tar.gz"' _site/installer/index.html
           cd _site/downloads
+          sha256sum "$source_file" >> SHA256SUMS.txt
           sha256sum -c SHA256SUMS.txt
       - uses: actions/upload-pages-artifact@v4
         with:
