@@ -82,7 +82,20 @@ jobs:
           grep -F 'href="../downloads/JAZZY-0.1.0-beta.1-20261110.1.fwsc"' _site/installer/index.html
           grep -F 'href="../downloads/JAZZY-0.1.0-beta.1-20261110.1-source.tar.gz"' _site/installer/index.html
           grep -F 'WEB PLAY · BUILD 20261110.1' _site/emulator/index.html
+          curl --fail --silent --show-error --retry 3 -o JAZZY-mixer-20261110.2.tar.gz https://raw.githubusercontent.com/JazzyRhythmer/Rhythmer/ea6dc65eeff1891451dd5ec4362b88717d6b834c/JAZZY-mixer-20261110.2.tar.gz
+          echo '0892270ab1552703e2f64c09522212daa959d6b085d4d514d6b7cf274fab54ad  JAZZY-mixer-20261110.2.tar.gz' | sha256sum -c -
+          mkdir _mixer_update
+          tar -xzf JAZZY-mixer-20261110.2.tar.gz -C _mixer_update
+          cp -a _mixer_update/site/. _site/
+          cp -a _mixer_update/source/. "_source/$release_tree/"
+          mixer_source=JAZZY-0.1.0-beta.1-20261110.2-source.tar.gz
+          tar --sort=name --mtime='UTC 2026-11-10' --owner=0 --group=0 --numeric-owner -C _source -cf - "$release_tree" | gzip -n > "_site/downloads/$mixer_source"
+          grep -F 'href="../downloads/JAZZY-0.1.0-beta.1-20261110.2.fwsc"' _site/installer/index.html
+          grep -F 'href="../downloads/JAZZY-0.1.0-beta.1-20261110.2-source.tar.gz"' _site/installer/index.html
+          grep -F 'WEB PLAY · BUILD 20261110.2' _site/emulator/index.html
           cd _site/downloads
+          echo 'a36a6236d7695df70e5fce9ea27fe11dd8240846358b1650a3ba9916daa278fd  JAZZY-0.1.0-beta.1-20261110.2.fwsc' >> SHA256SUMS.txt
+          sha256sum "$mixer_source" >> SHA256SUMS.txt
           echo '10325053d16f561d6f5194c54e8a92750eb0947fdfb32326ee2fb7b380ce9fea  JAZZY-0.1.0-beta.1-20261110.1.fwsc' >> SHA256SUMS.txt
           sha256sum "$audio_source" >> SHA256SUMS.txt
           echo '5042f4351e17a6b9222e4e7f96845fab5d9323f249a93e06a82a8b511bdbe51c  JAZZY-0.1.0-beta.1-20261109.2.fwsc' >> SHA256SUMS.txt
