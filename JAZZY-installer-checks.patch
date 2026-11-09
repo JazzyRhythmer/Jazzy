@@ -1,0 +1,162 @@
+--- a/installer/index.html
++++ b/installer/index.html
+@@ -8,8 +8,8 @@
+ <title>JAZZY / Installer</title>
+ <link rel="icon" href="../jazzy-mark.svg" type="image/svg+xml">
+ <link rel="stylesheet" href="../firmware-links.css">
+-<link rel="stylesheet" href="installer.css?v=b7616c523f98">
+-<script type="module" src="installer.mjs?v=426da956faea"></script>
++<link rel="stylesheet" href="installer.css?v=2800f322217c">
++<script type="module" src="installer.mjs?v=04dcede3a60b"></script>
+ </head>
+ <body>
+ <header class="install-header">
+@@ -51,9 +51,10 @@
+     <p>For your first install, back up your music and start from the official V15 firmware. Use <a href="?mode=stock">RETURN TO V15</a> if you are coming from another custom firmware. Save a backup with that firmware’s own editor first. A supported JAZZY or RHYTHMER build can export a musical backup here. V15 recovery can make custom music unreadable.</p>
+   </div>
+   <section id="transfer-status" class="transfer-status" aria-label="Installation progress"></section>
+-  <div class="notice">
++  <div class="notice" id="risk-notice">
+     <strong>Independent public beta.</strong>
+-    <p>JAZZY is independent of M-VAVE. Firmware changes can cause data loss or require recovery. Use stable power and keep USB connected until the installer confirms the restart.</p>
++    <p>Firmware updates can erase music, presets or samples, leave the FM-1 in update mode or require hardware recovery. Testing of this build on physical devices is limited. Back up first and keep power and USB connected until the installer verifies the restart.</p>
++    <p>JAZZY is an independent community project with no affiliation, sponsorship or endorsement by M-VAVE. To the extent permitted by law, JAZZY is provided without warranty and its authors and contributors disclaim liability for device damage, malfunction and data loss. Statutory rights and liability that cannot be excluded still apply.</p>
+   </div>
+   <div class="layout">
+     <aside aria-label="Installation steps">
+@@ -80,7 +81,7 @@
+       <section>
+         <span class="eyebrow">02 / CONNECT</span>
+         <h2>One FM-1. A data cable.</h2>
+-        <p>Set the FM-1 to USB Device mode, stop playback and close DAWs and other USB MIDI editors. Install handles connection and inspection automatically. Use Connect &amp; Inspect to check the device identity separately.</p>
++        <p>Use desktop Chrome or Edge over HTTPS or localhost. Connect one FM-1 with a USB data cable, set it to USB Device mode, stop playback and close DAWs, other installers and USB MIDI editors. Install handles connection and inspection automatically. Use Connect &amp; Inspect to check the device identity separately.</p>
+         <div class="actions"><button type="button" id="connect" disabled>CONNECT &amp; INSPECT</button><button type="button" id="disconnect" disabled>DISCONNECT</button></div>
+         <p id="device-status" role="status">Not connected.</p>
+       </section>
+@@ -91,11 +92,13 @@
+         <button type="button" id="backup" disabled>READ MUSICAL BACKUP</button>
+         <a id="backup-download" class="button" hidden download>DOWNLOAD BACKUP ↓</a>
+         <p id="backup-status" role="status">Inspect the device first.</p>
++        <label class="check"><input id="backup-saved" type="checkbox" disabled><span id="backup-label">I downloaded and saved the musical backup outside this browser, and kept my original Break audio separately.</span></label>
+       </section>
+       <section>
+         <span class="eyebrow">04 / REVIEW</span>
+         <h2 id="review-heading">Review the JAZZY installation.</h2>
+         <p id="review-copy">One firmware transfer installs JAZZY and replaces Break slots A and B with the included Amen and Think loops. Save any custom loops separately before continuing.</p>
++        <label class="check"><input id="review-risk" type="checkbox"><span>I understand the risks of a public beta firmware update. Official V15 recovery has been verified, and I will keep power and USB connected.</span></label>
+         <button type="button" id="review" disabled>REVIEW INSTALLATION →</button>
+         <p id="result" role="status" aria-live="polite">Nothing has been written.</p>
+         <pre id="log" aria-label="Installation log"></pre>
+@@ -115,11 +118,13 @@
+     <span class="eyebrow">FINAL REVIEW / DEVICE WRITE</span>
+     <h2 id="confirm-title">Install JAZZY?</h2>
+     <p id="confirm-detail"></p>
+-    <p>Keep USB and power connected until verification finishes.</p>
++    <p>The next action writes to the connected FM-1. Keep USB and power connected until verification finishes.</p>
+     <a id="confirm-download" hidden class="button" download>DOWNLOAD BACKUP ↓</a>
+     <label class="check"><input id="confirm-backup" type="checkbox"><span id="confirm-backup-label">I saved the backup.</span></label>
+-    <label class="check"><input id="confirm-risk" type="checkbox"><span>I understand this is public beta firmware and this write may erase data or require recovery. I will keep power and USB connected.</span></label>
+-    <label class="check" id="confirm-audio-row"><input id="confirm-audio" type="checkbox"><span>I understand that JAZZY replaces Break A and B with the included third-party recordings. I saved any original audio separately and read the Break audio notice.</span></label>
++    <label class="check"><input id="confirm-risk" type="checkbox"><span>I understand this write may erase data or require recovery. Official V15 recovery has been verified, and I will keep power and USB connected.</span></label>
++    <label class="check"><input id="confirm-notice" type="checkbox"><span>I read the risk and independence notice. JAZZY is independent of M-VAVE. The notice describes warranty and liability limits, and my non-excludable legal rights still apply.</span></label>
++    <label class="check" id="confirm-v15-row"><input id="confirm-v15" type="checkbox"><span>I checked my current firmware and understand that official V15 is recommended for a first JAZZY installation or when switching firmware families. A matching JAZZY can be updated directly after backup.</span></label>
++    <label class="check" id="confirm-audio-row"><input id="confirm-audio" type="checkbox"><span>I read the <a href="../downloads/THIRD-PARTY-AUDIO.txt" target="_blank" rel="noopener">Break audio notice</a>. JAZZY replaces Break A and B with Amen and Think. Credits and this checkbox grant no recording rights. I am responsible for any permission my use requires.</span></label>
+     <div class="actions"><button value="cancel">CANCEL</button><button id="confirm-write" value="write" disabled>WRITE TO THIS FM-1</button></div>
+   </form>
+ </dialog>
+--- a/installer/installer.mjs
++++ b/installer/installer.mjs
+@@ -10,7 +10,9 @@
+ const progress = mountProgress(el('transfer-status'));
+ const dialog = el('confirm');
+ const events = [];
+-const checks = ['confirm-backup', 'confirm-risk', 'confirm-audio'];
++const checks = ['confirm-backup', 'confirm-risk', 'confirm-notice'];
++if (mode === 'jazzy') checks.push('confirm-v15', 'confirm-audio');
++const backupLabel = el('backup-label').textContent;
+ let manifest, target, recovery, source, up, access, releaseLock, heartbeat, channel;
+ let archiveURL, reportURL, working = false, writing = false, lastStage;
+ document.body.dataset.mode = mode;
+@@ -30,6 +32,8 @@
+   el('connect').disabled = working || !ready || !!source;
+   el('disconnect').disabled = working || !source;
+   el('backup').disabled = working || !source?.name;
++  el('backup-saved').disabled = working || !source || !!source.name && !archiveURL;
++  el('review-risk').disabled = working || !ready;
+   el('review').disabled = working || !source || !ready;
+   el('stock-file').disabled = working || !recovery;
+ }
+@@ -118,6 +122,7 @@
+   if (archiveURL) URL.revokeObjectURL(archiveURL);
+   archiveURL = undefined;
+   el('backup-download').hidden = true;
++  el('backup-saved').checked = false;
+ }
+ function disconnect() {
+   if (heartbeat) clearInterval(heartbeat);
+@@ -133,6 +138,8 @@
+   releaseLock = undefined;
+   access = up = source = undefined;
+   clearArchive();
++  el('backup-label').textContent = backupLabel;
++  el('review-risk').checked = false;
+   el('device-status').textContent = 'Not connected.';
+   el('backup-status').textContent = 'Inspect the device first.';
+ }
+@@ -155,6 +162,8 @@
+     up = new ReviewedUpdater(await midi(), log, { refresh: midi });
+     source = await identify();
+     el('device-status').textContent = source.id + (source.name ? ' / ' + source.name : '');
++    el('backup-label').textContent = source.name ? backupLabel :
++      'This stock firmware or loader cannot export a musical archive here. I kept any earlier backups and original Break audio, and understand that data may be lost.';
+     el('backup-status').textContent = source.name ? 'Ready to prepare a musical backup.' : 'Official firmware and the update loader do not offer a musical archive here.';
+     status('Device identified. No device write has started.');
+   } catch (e) {
+@@ -181,7 +190,7 @@
+   } finally { link.close(); }
+ }
+ 
+-const readyToWrite = () => checks.every(id => (id === 'confirm-audio' && mode === 'stock') || el(id).checked);
++const readyToWrite = () => checks.every(id => el(id).checked);
+ for (const id of checks) el(id).addEventListener('change', () => { el('confirm-write').disabled = !readyToWrite(); });
+ dialog.querySelector('form').addEventListener('submit', event => {
+   if (event.submitter?.value === 'write' && !readyToWrite()) event.preventDefault();
+@@ -193,7 +202,8 @@
+     (mode === 'stock' ? 'Official M-VAVE V15' : 'JAZZY v0.1.0-beta.1') +
+     ' (' + target.product + '). SHA-256: ' + target.sha256 + '.';
+   for (const id of checks) el(id).checked = false;
+-  el('confirm-audio-row').hidden = mode === 'stock';
++  el('confirm-backup').checked = el('backup-saved').checked;
++  el('confirm-risk').checked = el('review-risk').checked;
+   el('confirm-write').disabled = true;
+   const save = el('confirm-download');
+   save.hidden = !archiveURL;
+@@ -201,9 +211,7 @@
+     save.href = archiveURL;
+     save.download = el('backup-download').download;
+   }
+-  el('confirm-backup-label').textContent = archiveURL
+-    ? 'I downloaded and saved the musical backup outside this browser.'
+-    : 'The stock firmware or loader cannot export a musical archive here. I have kept any earlier backups and understand that data may be lost.';
++  el('confirm-backup-label').textContent = el('backup-label').textContent;
+   progress.enter('review', 'Review the target, save the backup and confirm. No device write has started.');
+   dialog.returnValue = '';
+   dialog.showModal();
+@@ -317,7 +325,7 @@
+   el('review').textContent = 'REVIEW V15 RECOVERY →';
+   el('review-heading').textContent = 'Restore the original firmware.';
+   el('review-copy').textContent = 'Official V15 recovery installs stock firmware and verifies its identity after restart. Custom music is not imported into V15.';
+-  for (const id of ['sample-brief', 'bundle-download', 'v15-recommendation']) el(id).hidden = true;
++  for (const id of ['sample-brief', 'bundle-download', 'v15-recommendation', 'confirm-v15-row', 'confirm-audio-row']) el(id).hidden = true;
+ }
+ progress.render(true);
+ run(async () => {
+--- a/installer/installer.css
++++ b/installer/installer.css
+@@ -34,3 +34,6 @@
+ .transfer-status progress::-moz-progress-bar { background: #8bd0e3; }
+ dialog { background: #11171a; border-color: #5c737d; }
+ :focus-visible { outline: 2px solid #8bd0e3; outline-offset: 4px; }
++
++#confirm { width: min(650px, calc(100% - 32px)); padding: clamp(16px, 4vw, 32px); }
++#confirm .check { margin: 14px 0; }
