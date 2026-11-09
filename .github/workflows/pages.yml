@@ -2,7 +2,7 @@ name: Deploy JAZZY website
 on:
   push:
     branches: [main]
-    paths: ['JAZZY-*-source.tar.gz', 'JAZZY-web-pad.tar.gz', 'JAZZY-web-launch-film.tar.gz', 'JAZZY-web-companion-and-installer.tar.gz.b64', 'JAZZY-preset-refresh-20261109.tar.gz.*.b64', 'JAZZY-web-play-ready.patch', 'JAZZY-fixes-20261109.2.tar.gz.*.b64', 'JAZZY-installer-checks.patch', 'JAZZY-sidechain-20261109.3.tar.gz.*.b64', '.github/workflows/pages.yml']
+    paths: ['JAZZY-*-source.tar.gz', 'JAZZY-web-pad.tar.gz', 'JAZZY-web-launch-film.tar.gz', 'JAZZY-web-companion-and-installer.tar.gz.b64', 'JAZZY-preset-refresh-20261109.tar.gz.*.b64', 'JAZZY-web-play-ready.patch', 'JAZZY-fixes-20261109.2.tar.gz.*.b64', 'JAZZY-installer-checks.patch', 'JAZZY-sidechain-20261109.3.tar.gz.*.b64', 'JAZZY-community.patch', '.github/workflows/pages.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -66,6 +66,7 @@ jobs:
           grep -F 'href="../downloads/JAZZY-0.1.0-beta.1-20261109.3.fwsc"' _site/installer/index.html
           grep -F 'href="../downloads/JAZZY-0.1.0-beta.1-20261109.3-source.tar.gz"' _site/installer/index.html
           grep -F 'id="confirm-notice"' _site/installer/index.html
+          patch --batch --fuzz=0 -d _site -p1 < JAZZY-community.patch
           cd _site/downloads
           echo '5042f4351e17a6b9222e4e7f96845fab5d9323f249a93e06a82a8b511bdbe51c  JAZZY-0.1.0-beta.1-20261109.2.fwsc' >> SHA256SUMS.txt
           echo '84899dae54d489a1afa827ec01647260291cd08678f9f94a9479ab9324386277  JAZZY-0.1.0-beta.1-20261109.3.fwsc' >> SHA256SUMS.txt
