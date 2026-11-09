@@ -2,7 +2,7 @@ name: Deploy JAZZY website
 on:
   push:
     branches: [main]
-    paths: ['JAZZY-*-source.tar.gz', 'JAZZY-web-house.tar.gz', '.github/workflows/pages.yml']
+    paths: ['JAZZY-*-source.tar.gz', 'JAZZY-web-pad.tar.gz', '.github/workflows/pages.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -22,8 +22,8 @@ jobs:
           echo 'e07f39bf4dc629a17b9535290536e94c0a87f87e79f059875a48258372e0fe5a  JAZZY-0.1.0-beta.1-source.tar.gz' | sha256sum -c -
           mkdir _site
           tar -xzf JAZZY-0.1.0-beta.1-source.tar.gz -C _site --strip-components=2 Jazzy-0.1.0-beta.1/www
-          echo 'b64d375fed8a21a6ce95f8a5001164c7e27ea871760ca176c29644c3c937b3ea  JAZZY-web-house.tar.gz' | sha256sum -c -
-          tar -xzf JAZZY-web-house.tar.gz -C _site
+          echo '5ceedcd280fb61cedd593beca24efdb47ac44384bd6c933f39088c47b6a89632  JAZZY-web-pad.tar.gz' | sha256sum -c -
+          tar -xzf JAZZY-web-pad.tar.gz -C _site
           sed -i 's/JAZZY-Hortator-with-breaks\.fwsc/JAZZY-0.1.0-beta.1.fwsc/' _site/installer/index.html
           grep -F 'href="../downloads/JAZZY-0.1.0-beta.1.fwsc"' _site/installer/index.html
           cd _site/downloads
