@@ -2,7 +2,7 @@ name: Deploy JAZZY website
 on:
   push:
     branches: [main]
-    paths: ['JAZZY-*-source.tar.gz', 'JAZZY-web-pad.tar.gz', 'JAZZY-web-launch-film.tar.gz', 'JAZZY-web-companion-and-installer.tar.gz.b64', 'JAZZY-preset-refresh-20261109.tar.gz.*.b64', 'JAZZY-web-play-ready.patch', '.github/workflows/pages.yml']
+    paths: ['JAZZY-*-source.tar.gz', 'JAZZY-web-pad.tar.gz', 'JAZZY-web-launch-film.tar.gz', 'JAZZY-web-companion-and-installer.tar.gz.b64', 'JAZZY-preset-refresh-20261109.tar.gz.*.b64', 'JAZZY-web-play-ready.patch', 'JAZZY-fixes-20261109.2.tar.gz.*.b64', '.github/workflows/pages.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -45,8 +45,18 @@ jobs:
           tar --sort=name --mtime='UTC 2026-11-09' --owner=0 --group=0 --numeric-owner -C _source -cf - "$release_tree" | gzip -n > "_site/downloads/$source_file"
           grep -F 'href="../downloads/JAZZY-0.1.0-beta.1-20261109.fwsc"' _site/installer/index.html
           grep -F 'href="../downloads/JAZZY-0.1.0-beta.1-20261109-source.tar.gz"' _site/installer/index.html
+          cat JAZZY-fixes-20261109.2.tar.gz.{01,02,03,04,05}.b64 | base64 --decode > JAZZY-fixes-20261109.2.tar.gz
+          echo '7f41217bf63fe32c6c29b2e6f874a603499b31f2fef43a3373cf4bcc5e2f0b1d  JAZZY-fixes-20261109.2.tar.gz' | sha256sum -c -
+          mkdir _fixes
+          tar -xzf JAZZY-fixes-20261109.2.tar.gz -C _fixes
+          cp -a _fixes/site/. _site/
+          cp -a _fixes/source/. "_source/$release_tree/"
+          fixes_source=JAZZY-0.1.0-beta.1-20261109.2-source.tar.gz
+          tar --sort=name --mtime='UTC 2026-11-09' --owner=0 --group=0 --numeric-owner -C _source -cf - "$release_tree" | gzip -n > "_site/downloads/$fixes_source"
+          grep -F 'href="../downloads/JAZZY-0.1.0-beta.1-20261109.2.fwsc"' _site/installer/index.html
           cd _site/downloads
-          sha256sum "$source_file" >> SHA256SUMS.txt
+          echo '5042f4351e17a6b9222e4e7f96845fab5d9323f249a93e06a82a8b511bdbe51c  JAZZY-0.1.0-beta.1-20261109.2.fwsc' >> SHA256SUMS.txt
+          sha256sum "$source_file" "$fixes_source" >> SHA256SUMS.txt
           sha256sum -c SHA256SUMS.txt
       - uses: actions/upload-pages-artifact@v4
         with:
