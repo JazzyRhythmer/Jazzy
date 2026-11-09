@@ -93,6 +93,10 @@ jobs:
           grep -F 'href="../downloads/JAZZY-0.1.0-beta.1-20261110.2.fwsc"' _site/installer/index.html
           grep -F 'href="../downloads/JAZZY-0.1.0-beta.1-20261110.2-source.tar.gz"' _site/installer/index.html
           grep -F 'WEB PLAY · BUILD 20261110.2' _site/emulator/index.html
+          curl --fail --silent --show-error --retry 3 -o JAZZY-wavetable-web-20261110.3.tar.gz https://raw.githubusercontent.com/JazzyRhythmer/Rhythmer/9c02e14a172def94af5a2cd1ab7beb1b80f949d5/JAZZY-wavetable-web-20261110.3.tar.gz
+          echo 'd90fc296b94ca82bde494c9914907e8657a7db806a896cd08cea7081de5421c0  JAZZY-wavetable-web-20261110.3.tar.gz' | sha256sum -c -
+          tar -xzf JAZZY-wavetable-web-20261110.3.tar.gz -C _site
+          grep -F '"WAVETABLE"' _site/catalog.mjs
           cd _site/downloads
           echo 'a36a6236d7695df70e5fce9ea27fe11dd8240846358b1650a3ba9916daa278fd  JAZZY-0.1.0-beta.1-20261110.2.fwsc' >> SHA256SUMS.txt
           sha256sum "$mixer_source" >> SHA256SUMS.txt
