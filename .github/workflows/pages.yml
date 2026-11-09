@@ -2,7 +2,7 @@ name: Deploy JAZZY website
 on:
   push:
     branches: [main]
-    paths: ['JAZZY-*-source.tar.gz', 'JAZZY-web-pad.tar.gz', 'JAZZY-web-launch-film.tar.gz', '.github/workflows/pages.yml']
+    paths: ['JAZZY-*-source.tar.gz', 'JAZZY-web-pad.tar.gz', 'JAZZY-web-launch-film.tar.gz', 'JAZZY-web-companion-and-installer.tar.gz.b64', '.github/workflows/pages.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -26,7 +26,9 @@ jobs:
           tar -xzf JAZZY-web-pad.tar.gz -C _site
           echo '689deb3d4bafbb80cf245e4619f265267161d1dbaa89c1cef8d7964b90a6d54b  JAZZY-web-launch-film.tar.gz' | sha256sum -c -
           tar -xzf JAZZY-web-launch-film.tar.gz -C _site
-          sed -i 's/JAZZY-Hortator-with-breaks\.fwsc/JAZZY-0.1.0-beta.1.fwsc/' _site/installer/index.html
+          base64 --decode JAZZY-web-companion-and-installer.tar.gz.b64 > JAZZY-web-companion-and-installer.tar.gz
+          echo '0ae2dbffea9a18dcc0e8610a3308b460119660af10d713b1b1885677d2edc1e1  JAZZY-web-companion-and-installer.tar.gz' | sha256sum -c -
+          tar -xzf JAZZY-web-companion-and-installer.tar.gz -C _site
           grep -F 'href="../downloads/JAZZY-0.1.0-beta.1.fwsc"' _site/installer/index.html
           cd _site/downloads
           sha256sum -c SHA256SUMS.txt
