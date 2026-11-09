@@ -1,0 +1,29 @@
+--- a/emulator/index.html
++++ b/emulator/index.html
+@@ -41,7 +41,7 @@
+       </div>
+       <div class="stage">
+         <canvas id="panel" aria-label="FM-1 front panel"></canvas>
+-        <button id="start">Start JAZZY</button>
++        <button id="start" disabled>Start JAZZY</button>
+       </div>
+       <p class="rotate">Turn the phone sideways for a bigger synth.</p>
+       <p class="hint">
+@@ -332,6 +332,6 @@
+     </div>
+   </div>
+ </footer>
+-<script type="module" src="main.js?v=88f95f79fb01"></script>
++<script type="module" src="main.js?v=30bbc7c0521b"></script>
+ </body>
+ </html>
+--- a/emulator/main.js
++++ b/emulator/main.js
+@@ -1052,6 +1052,7 @@
+   if (!auto && matchMedia("(orientation: landscape) and (max-height: 560px)").matches) canvas.scrollIntoView({ block: "center" });
+ }
+ startBtn.addEventListener("click", () => start());
++startBtn.disabled = false;
+ if (tryOutError) status.textContent = tryOutError;
+ else if (tryOut) {
+   saveMessage("A try-out: it starts from the firmware's own flash and is not saved in this browser");
