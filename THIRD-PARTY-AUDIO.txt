@@ -1,0 +1,19 @@
+JAZZY / BUNDLED THIRD-PARTY RECORDINGS
+
+A / AMEN — “Amen, Brother”, The Winstons (1969).
+Drums by Gregory C. Coleman. Amenity credits composition to Richard L. Spencer.
+Source: https://github.com/ejtb76/amenity/tree/main/assets/third-party/amen
+
+B / THINK — “Think (About It)”, Lyn Collins (1972).
+Prepared from the Classic Break Pack recordings lyncollins_think_1.wav
+and lyncollins_think_2.wav. The two-bar pattern uses drum intervals
+from those recordings.
+
+Both banks are two bars of mono PCM12 at 16 kHz and 160 BPM. Preparation
+includes cropping, repitching, level adjustment and endpoint fades.
+
+Recording and composition rights remain with the respective rights holders.
+The GPL-3.0-only license applies to JAZZY’s firmware code. The project owner
+directed inclusion of these recordings. Rights-holder authorization for
+redistribution of these copies has not been obtained. This notice grants
+no rights to the recordings.
