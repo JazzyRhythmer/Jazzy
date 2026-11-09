@@ -108,7 +108,20 @@ jobs:
           grep -F 'href="../downloads/JAZZY-0.1.0-beta.1-20261110.3-source.tar.gz"' _site/installer/index.html
           grep -F 'WEB PLAY · BUILD 20261110.3' _site/emulator/index.html
           grep -F '"WAVETABLE"' _site/catalog.mjs
+          curl --fail --silent --show-error --retry 3 -o JAZZY-web-editor-20261110.3.tar.gz https://raw.githubusercontent.com/JazzyRhythmer/Rhythmer/780031a6b64161f79c50ef9c5f53e59605e4b37e/JAZZY-web-editor-20261110.3.tar.gz
+          echo '08b91c63995907ae93650b42eadb56b2b96c2026def2bd494cf891ddda81d02b  JAZZY-web-editor-20261110.3.tar.gz' | sha256sum -c -
+          mkdir _editor_update
+          tar -xzf JAZZY-web-editor-20261110.3.tar.gz -C _editor_update
+          cp -a _editor_update/site/. _site/
+          cp -a _editor_update/source/. "_wavetable_update/$release_tree/"
+          editor_source=JAZZY-web-editor-source-20261110.3.tar.gz
+          tar --sort=name --mtime='UTC 2026-11-10' --owner=0 --group=0 --numeric-owner -C _wavetable_update -cf - "$release_tree" | gzip -n > "_site/downloads/$editor_source"
+          test -s _site/editor/workspace.wasm
+          grep -F 'href="editor/">Editor</a>' _site/index.html
+          grep -F 'JAZZY — Web Editor' _site/editor/index.html
+          python3 -c 'import json; assert json.load(open("_site/editor/factory-seed.json"))["hash"] == json.load(open("_site/release.json"))["sha256"]'
           cd _site/downloads
+          sha256sum "$editor_source" >> SHA256SUMS.txt
           echo '7e351056388089b3528040718187d34d00860bbbdf71e23eec5be2d1bc65570e  JAZZY-0.1.0-beta.1-20261110.3.fwsc' >> SHA256SUMS.txt
           sha256sum "$wavetable_source" >> SHA256SUMS.txt
           echo 'a36a6236d7695df70e5fce9ea27fe11dd8240846358b1650a3ba9916daa278fd  JAZZY-0.1.0-beta.1-20261110.2.fwsc' >> SHA256SUMS.txt
