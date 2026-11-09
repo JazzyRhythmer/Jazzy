@@ -1,0 +1,9 @@
+{
+  "what": "JAZZY turns the FM-1 into a sound exploration instrument with 31 engines and over 1,200 factory sounds. Play analog, FM, wavetable and drum voices, chop breaks, and build patterns with one sound per track in four- or six-track mode.",
+  "author": "Jazzy Rhythmer",
+  "kinds": ["groove"],
+  "play": "https://jazzyrhythmer.github.io/Jazzy/emulator/",
+  "cheat": "https://jazzyrhythmer.github.io/Jazzy/manual/#quick",
+  "image": "jazzy-hub-card.png",
+  "color": "#E7B866"
+}
