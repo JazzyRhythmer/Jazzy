@@ -2,7 +2,7 @@ name: Deploy JAZZY website
 on:
   push:
     branches: [main]
-    paths: ['JAZZY-*-source.tar.gz', 'JAZZY-web-pad.tar.gz', 'JAZZY-web-launch-film.tar.gz', 'JAZZY-web-companion-and-installer.tar.gz.b64', 'JAZZY-preset-refresh-20261109.tar.gz.*.b64', '.github/workflows/pages.yml']
+    paths: ['JAZZY-*-source.tar.gz', 'JAZZY-web-pad.tar.gz', 'JAZZY-web-launch-film.tar.gz', 'JAZZY-web-companion-and-installer.tar.gz.b64', 'JAZZY-preset-refresh-20261109.tar.gz.*.b64', 'JAZZY-web-play-ready.patch', '.github/workflows/pages.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -34,6 +34,7 @@ jobs:
           mkdir _preset_refresh
           tar -xzf JAZZY-preset-refresh-20261109.tar.gz -C _preset_refresh
           cp -a _preset_refresh/site/. _site/
+          patch --batch --fuzz=0 -d _site -p1 < JAZZY-web-play-ready.patch
           curl --fail --silent --show-error --retry 3 -o _site/emulator/fm1_web.wasm https://raw.githubusercontent.com/JazzyRhythmer/Rhythmer/5aaa010c59ba0c6b81c4423cbe310997c880f3bc/emulator/fm1_web.wasm
           echo '5e9cea87026f03672380cacfd4b198dad6c74a975a7d307826d3330f86bedd41  _site/emulator/fm1_web.wasm' | sha256sum -c -
           release_tree=Jazzy-0.1.0-beta.1
