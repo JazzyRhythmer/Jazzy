@@ -6,6 +6,12 @@
 
 [**Explore the engines**](https://jazzyrhythmer.github.io/Jazzy/#engines) · [**Play in your browser**](https://jazzyrhythmer.github.io/Jazzy/emulator/) · [**Install JAZZY**](https://jazzyrhythmer.github.io/Jazzy/installer/) · [Field manual](https://jazzyrhythmer.github.io/Jazzy/manual/) · [Releases](https://github.com/JazzyRhythmer/Jazzy/releases)
 
+## Build 20261111.1 · Sidechain and Kick Link
+
+Choose an internal kick, a track, USB audio or a matching MIDI note as the trigger. **Kick Link** lets one FM‑1 running JAZZY or RHYTHMER trigger ducking on the other. Set attack, release and amount in **FX → MASTER → DUCK ENV**.
+
+This build also includes USB MIDI Host, 31 refreshed pixel scenes with individual backdrops, note-driven TRIO animation, and the earlier attack and mixer headroom fixes. [What’s new](https://jazzyrhythmer.github.io/Jazzy/#update) · [Sidechain and Kick Link guide](https://jazzyrhythmer.github.io/Jazzy/manual/#duck)
+
 ## The engine room
 
 | FMINI-1 · Bass & leads | OberVave · Analog poly |
