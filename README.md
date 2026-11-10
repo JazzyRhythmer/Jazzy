@@ -16,10 +16,10 @@ This build also includes USB MIDI Host, 31 refreshed pixel scenes with individua
 
 | FMINI-1 · Bass & leads | OberVave · Analog poly |
 | --- | --- |
-| ![FMINI-1 skater animation reacting to notes](docs/github/fmini.gif) | ![OberVave animated firmware display](docs/github/obervave.gif) |
+| ![FMINI-1 skater animation reacting to notes](https://jazzyrhythmer.github.io/Jazzy/assets/engine-23.webp?v=20261111.1) | ![OberVave animated firmware display](https://jazzyrhythmer.github.io/Jazzy/assets/engine-24.webp?v=20261111.1) |
 | Three-oscillator analog voicing, from rounded bass to sharper leads. | Resonant analog colours for keys, brass and moving pads. |
 | **HYDRA · Digital textures** | **LXR · Drum synthesis** |
-| ![HYDRA animated firmware display](docs/github/hydra.gif) | ![LXR wrecking ball animation reacting to hits](docs/github/lxr.gif) |
+| ![HYDRA animated firmware display](https://jazzyrhythmer.github.io/Jazzy/assets/engine-41.webp?v=20261111.1) | ![LXR wrecking ball animation reacting to hits](https://jazzyrhythmer.github.io/Jazzy/assets/engine-42.webp?v=20261111.1) |
 | Wavetable and mutation-inspired tones that shift under the fingers. | Browse individual voices drawn from 85 LXR factory sets. |
 
 The GIFs show the firmware screens. [Hear the patches and drum demo on the website](https://jazzyrhythmer.github.io/Jazzy/#hear) or [browse all 31 engines](https://jazzyrhythmer.github.io/Jazzy/#engine-catalog).
@@ -37,7 +37,7 @@ The GIFs show the firmware screens. [Hear the patches and drum demo on the websi
 
 ## Install and build
 
-Use the [web installer](https://jazzyrhythmer.github.io/Jazzy/installer/) for the current build and official V15 recovery. **Back up projects, settings and samples first.** Go through official V15 when changing firmware families. The installer and the [GitHub release](https://github.com/JazzyRhythmer/Jazzy/releases/tag/v0.1.0-beta.1) list their package details separately.
+Use the [web installer](https://jazzyrhythmer.github.io/Jazzy/installer/) for the current build and official V15 recovery. **Back up projects, settings and samples first.** Go through official V15 when changing firmware families. The installer and the [GitHub release](https://github.com/JazzyRhythmer/Jazzy/releases/tag/v0.1.0-beta.1-20261111.1) list their package details separately.
 
 See [build instructions](BUILDING.md) and the [source archive](JAZZY-0.1.0-beta.1-source.tar.gz). JAZZY is free and open source, developed by [Jazzy Rhythmer](https://jazzyrhythmer.github.io/) on the Rhythmer and JIANT foundation. Original credits and [GPL-3.0](LICENSE) notices remain. LXR factory preset data and the Amen/Think recordings have separate rights; see the [licensing notes](LICENSING.md), [LXR credits](https://jazzyrhythmer.github.io/Jazzy/manual/#lxr-credits) and [audio credits](THIRD-PARTY-AUDIO.txt).
 
