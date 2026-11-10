@@ -143,6 +143,10 @@ jobs:
           sed -i -e 's|assets/jazzy-launch.mp4?v=wavetable-20261110.3|assets/jazzy-launch.mp4?v=pixel-film-20261111|g' -e 's|poster="assets/jazzy-launch-poster.jpg"|poster="assets/jazzy-launch-poster.jpg?v=pixel-film-20261111"|' _site/index.html
           grep -F 'poster="assets/jazzy-launch-poster.jpg?v=pixel-film-20261111"' _site/index.html
           test -s _site/assets/jazzy-launch.mp4 && test -s _site/assets/jazzy-launch-poster.jpg
+          curl --fail --silent --show-error --retry 3 -o _site/manual/index.html https://raw.githubusercontent.com/JazzyRhythmer/Rhythmer/e6903127c4029fb5b9876039925890e5b0b0ee29/JAZZY-manual-usb-sync-20261111.html
+          echo '22c32a2c35611b3fbb7732d97c449ae70ad7806bedc9267cb9a2a2a9b1d5c44b  _site/manual/index.html' | sha256sum -c -
+          grep -F 'id="usb-sync"' _site/manual/index.html
+          grep -F 'id="kick-link"' _site/manual/index.html
           cd _site/downloads
           cat update-SHA256SUMS.txt startup-SHA256SUMS.txt >> SHA256SUMS.txt
           sha256sum "$editor_source" >> SHA256SUMS.txt
