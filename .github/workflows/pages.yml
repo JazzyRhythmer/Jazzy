@@ -147,6 +147,10 @@ jobs:
           echo '22c32a2c35611b3fbb7732d97c449ae70ad7806bedc9267cb9a2a2a9b1d5c44b  _site/manual/index.html' | sha256sum -c -
           grep -F 'id="usb-sync"' _site/manual/index.html
           grep -F 'id="kick-link"' _site/manual/index.html
+          curl --fail --silent --show-error --retry 3 -o JAZZY-usb-clock-sync-20261111.tar.gz https://raw.githubusercontent.com/JazzyRhythmer/Rhythmer/db63f8617798510f2e8fca7a0ff0691527666cf2/JAZZY-usb-clock-sync-20261111.tar.gz
+          echo 'af401ce34d349cf6a56a926ec62fccda365713be200ab34b2d06b349d7f7ddaa  JAZZY-usb-clock-sync-20261111.tar.gz' | sha256sum -c -
+          tar -xzf JAZZY-usb-clock-sync-20261111.tar.gz -C _site
+          python3 -c 'import hashlib, json, pathlib; root=pathlib.Path("_site"); m=json.load(open(root/"installer/manifest.json"))["jazzy"]; fw=(root/"installer"/m["url"].split("?")[0]).read_bytes(); assert m["build"] == "20261111.2" and len(fw) == m["bytes"] and hashlib.sha256(fw).hexdigest() == m["sha256"] == json.load(open(root/"editor/factory-seed.json"))["hash"] == json.load(open(root/"release.json"))["sha256"]'
           cd _site/downloads
           cat update-SHA256SUMS.txt startup-SHA256SUMS.txt >> SHA256SUMS.txt
           sha256sum "$editor_source" >> SHA256SUMS.txt
