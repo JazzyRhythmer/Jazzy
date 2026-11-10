@@ -130,8 +130,14 @@ jobs:
           grep -F 'id="kick-link"' _site/manual/index.html
           grep -F 'WEB PLAY · BUILD 20261111.1' _site/emulator/index.html
           python3 -c 'import json; m=json.load(open("_site/installer/manifest.json"))["jazzy"]; assert m["build"] == "20261111.1" and m["sha256"] == json.load(open("_site/editor/factory-seed.json"))["hash"] == json.load(open("_site/release.json"))["sha256"]'
+          curl --fail --silent --show-error --retry 3 -o JAZZY-startup-20261111.2.tar.gz https://raw.githubusercontent.com/JazzyRhythmer/Rhythmer/f0d9d18bd959b461732d09b9bb32d292a21446c5/JAZZY-startup-20261111.2.tar.gz
+          echo '25a776f562600069fd3732a4c28c098347c1b55c5d2260fcef0d5b2e573dc7ac  JAZZY-startup-20261111.2.tar.gz' | sha256sum -c -
+          tar -xzf JAZZY-startup-20261111.2.tar.gz -C _site
+          grep -F 'jazzy-startup.webp?v=20261111.2' _site/index.html
+          grep -F 'WEB PLAY · BUILD 20261111.2' _site/emulator/index.html
+          python3 -c 'import json; m=json.load(open("_site/installer/manifest.json"))["jazzy"]; assert m["build"] == "20261111.2" and m["sha256"] == json.load(open("_site/editor/factory-seed.json"))["hash"] == json.load(open("_site/release.json"))["sha256"]'
           cd _site/downloads
-          cat update-SHA256SUMS.txt >> SHA256SUMS.txt
+          cat update-SHA256SUMS.txt startup-SHA256SUMS.txt >> SHA256SUMS.txt
           sha256sum "$editor_source" >> SHA256SUMS.txt
           echo '7e351056388089b3528040718187d34d00860bbbdf71e23eec5be2d1bc65570e  JAZZY-0.1.0-beta.1-20261110.3.fwsc' >> SHA256SUMS.txt
           sha256sum "$wavetable_source" >> SHA256SUMS.txt
