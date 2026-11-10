@@ -123,6 +123,9 @@ jobs:
           curl --fail --silent --show-error --retry 3 -o JAZZY-sidechain-pixel-20261111.1.tar.gz https://raw.githubusercontent.com/JazzyRhythmer/Rhythmer/a963f8aa177bcfa9421410810ee0c49d5bdea0a3/JAZZY-sidechain-pixel-20261111.1.tar.gz
           echo 'a5bb4d918f7e4052f31a2982f16288895032c68352fd97e3fe7e3bfd15feb1d5  JAZZY-sidechain-pixel-20261111.1.tar.gz' | sha256sum -c -
           tar -xzf JAZZY-sidechain-pixel-20261111.1.tar.gz -C _site
+          curl --fail --silent --show-error --retry 3 -o _site/index.html https://raw.githubusercontent.com/JazzyRhythmer/Rhythmer/22f19cc22b33ccffa8481576eb6ca65fd8f86cbd/JAZZY-homepage-layout-20261111.html
+          echo '7195bf82924e9f5babc1480d05d486063b523af1f6c51c704314ce75f3784302  _site/index.html' | sha256sum -c -
+          grep -F 'id="manual"' _site/index.html
           grep -F 'id="update"' _site/index.html
           grep -F 'id="kick-link"' _site/manual/index.html
           grep -F 'WEB PLAY · BUILD 20261111.1' _site/emulator/index.html
