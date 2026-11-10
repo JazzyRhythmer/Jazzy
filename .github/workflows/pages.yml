@@ -136,6 +136,13 @@ jobs:
           grep -F 'jazzy-startup.webp?v=20261111.2' _site/index.html
           grep -F 'WEB PLAY · BUILD 20261111.2' _site/emulator/index.html
           python3 -c 'import json; m=json.load(open("_site/installer/manifest.json"))["jazzy"]; assert m["build"] == "20261111.2" and m["sha256"] == json.load(open("_site/editor/factory-seed.json"))["hash"] == json.load(open("_site/release.json"))["sha256"]'
+          curl --fail --silent --show-error --retry 3 -o JAZZY-launch-film-pixels-20261111.tar.gz https://raw.githubusercontent.com/JazzyRhythmer/Rhythmer/19bded371369ab30481326815fd7932e58322829/JAZZY-launch-film-pixels-20261111.tar.gz
+          echo '944a947b7b102a936fbeaa2b544e1addce10e1e5af96e2966a0e3955aaccf205  JAZZY-launch-film-pixels-20261111.tar.gz' | sha256sum -c -
+          tar -xzf JAZZY-launch-film-pixels-20261111.tar.gz -C _site
+          grep -F 'assets/jazzy-launch.mp4?v=wavetable-20261110.3' _site/index.html
+          sed -i -e 's|assets/jazzy-launch.mp4?v=wavetable-20261110.3|assets/jazzy-launch.mp4?v=pixel-film-20261111|g' -e 's|poster="assets/jazzy-launch-poster.jpg"|poster="assets/jazzy-launch-poster.jpg?v=pixel-film-20261111"|' _site/index.html
+          grep -F 'poster="assets/jazzy-launch-poster.jpg?v=pixel-film-20261111"' _site/index.html
+          test -s _site/assets/jazzy-launch.mp4 && test -s _site/assets/jazzy-launch-poster.jpg
           cd _site/downloads
           cat update-SHA256SUMS.txt startup-SHA256SUMS.txt >> SHA256SUMS.txt
           sha256sum "$editor_source" >> SHA256SUMS.txt
