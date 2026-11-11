@@ -189,6 +189,8 @@ jobs:
           echo '84899dae54d489a1afa827ec01647260291cd08678f9f94a9479ab9324386277  JAZZY-0.1.0-beta.1-20261109.3.fwsc' >> SHA256SUMS.txt
           sha256sum "$source_file" "$fixes_source" "$sidechain_source" >> SHA256SUMS.txt
           sha256sum -c SHA256SUMS.txt
+          sha256sum JAZZY-0.1.0-beta.1-20261111.3.fwsc JAZZY-0.1.0-beta.1-20261111.3-source.tar.gz >> SHA256SUMS.txt
+          sed -i 's/sha=19fbfb49ad2a/sha=0fea5d35b9a2/g; s@downloads/SHA256SUMS.txt@downloads/MULTIBREAK-SHA256SUMS.txt@g' ../installer/index.html
       - uses: actions/upload-pages-artifact@v4
         with:
           path: _site
