@@ -156,6 +156,10 @@ jobs:
           tar -xzf JAZZY-live-sessions-20261111.tar.gz -C _site
           grep -F 'youtube-nocookie.com/embed/3QUPD_offSk' _site/index.html
           test -s _site/performance-videos.css
+          curl --fail --silent --show-error --retry 3 -o JAZZY-fullwidth-sessions-20261111.tar.gz https://raw.githubusercontent.com/JazzyRhythmer/Rhythmer/af135d1895f9d529cc37bfccd563e50bd3a2f673/JAZZY-fullwidth-sessions-20261111.tar.gz
+          echo 'c4b5c2bba4aa99d79cc566b072671fda108f81bbcd875d8d6e8397550100d024  JAZZY-fullwidth-sessions-20261111.tar.gz' | sha256sum -c -
+          tar -xzf JAZZY-fullwidth-sessions-20261111.tar.gz -C _site
+          grep -F 'performance-videos.css?v=2d487d76c0e7' _site/index.html
           cd _site/downloads
           cat update-SHA256SUMS.txt startup-SHA256SUMS.txt >> SHA256SUMS.txt
           sha256sum "$editor_source" >> SHA256SUMS.txt
