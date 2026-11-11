@@ -6,15 +6,9 @@
 
 [**Explore the engines**](https://jazzyrhythmer.github.io/Jazzy/#engines) · [**Play in your browser**](https://jazzyrhythmer.github.io/Jazzy/emulator/) · [**Install JAZZY**](https://jazzyrhythmer.github.io/Jazzy/installer/) · [Field manual](https://jazzyrhythmer.github.io/Jazzy/manual/) · [Releases](https://github.com/JazzyRhythmer/Jazzy/releases)
 
-## Factory FX defaults · build 20261111.4
+## Playback base restored · 20261112.1
 
-Break factory sounds start with all four sends at zero. Acid uses DIST 30%, PHASER 0%, DLY 0%, REV 10%. Saved user mixes remain unchanged. Shared preset loading keeps all 31 engines and 1,221 sounds while recovering 176 bytes of application space. [Build notes](https://jazzyrhythmer.github.io/Jazzy/downloads/FX-DEFAULTS-20261111.4.md) · [Complete corresponding source](https://jazzyrhythmer.github.io/Jazzy/downloads/JAZZY-0.1.0-beta.1-20261111.4-source.tar.gz).
-
-## Multi-Break · build 20261111.3
-
-Break can now run on several tracks, sharing only the two A/B sample banks. Each track keeps its own chops, pitch, filter, repeats and modulation. GEN targets T1–T6 directly and shows Break controls when the selected track uses Break. Both factory Break banks remain included.
-
-[Install](https://jazzyrhythmer.github.io/Jazzy/installer/) · [Web Play](https://jazzyrhythmer.github.io/Jazzy/emulator/?fw=jazzy) · [Multi-Break guide](https://jazzyrhythmer.github.io/Jazzy/manual/#multi-break) · [Complete corresponding source](https://jazzyrhythmer.github.io/Jazzy/downloads/JAZZY-0.1.0-beta.1-20261111.3-source.tar.gz)
+Restored from the preserved JAZZY 20261111.2 source. Only HYDRA high-note legato, LXR track ENV and the factory-send default changes are applied. Break occupies one track; Amen A and Think B remain included. All 31 engines and 1,221 factory sounds remain. [Release notes and verification](https://jazzyrhythmer.github.io/Jazzy/downloads/SINGLE-BREAK-20261112.1.md) · [Complete source and selected patch](https://jazzyrhythmer.github.io/Jazzy/downloads/JAZZY-0.1.0-beta.1-20261112.1-source.tar.gz).
 
 ## Build 20261111.1 · Sidechain and Kick Link
 
