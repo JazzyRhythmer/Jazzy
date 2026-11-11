@@ -172,6 +172,10 @@ jobs:
           tar -xzf JAZZY-sample-guide-20261111.tar.gz -C _site
           grep -F 'id="samples"' _site/manual/index.html
           grep -F 'sample-guide-20261111' _site/editor/index.html
+          curl --fail --silent --show-error --retry 3 -o JAZZY-multi-break-20261111.3.tar.gz https://raw.githubusercontent.com/JazzyRhythmer/Rhythmer/4dac60eaeddb6072138b6d122d35be580288862e/JAZZY-multi-break-20261111.3.tar.gz
+          echo '9c64b69d5b9184f448f95cb8a4eef69c20d199b773d100b4cfc2f15213c730b3  JAZZY-multi-break-20261111.3.tar.gz' | sha256sum -c -
+          tar -xzf JAZZY-multi-break-20261111.3.tar.gz -C _site
+          (cd _site/downloads && sha256sum -c MULTIBREAK-SHA256SUMS.txt)
           cd _site/downloads
           cat update-SHA256SUMS.txt startup-SHA256SUMS.txt >> SHA256SUMS.txt
           sha256sum "$editor_source" >> SHA256SUMS.txt
