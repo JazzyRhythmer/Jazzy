@@ -195,6 +195,10 @@ jobs:
           curl --fail --silent --show-error --retry 3 -o JAZZY-sample-upload-ui-20261111.4.tar.gz https://raw.githubusercontent.com/JazzyRhythmer/Rhythmer/3b87c28378c64d47e74cb10d7662b48c950df3ae/JAZZY-sample-upload-ui-20261111.4.tar.gz
           echo '16ee3b1cb65abd121628a318463cb8b8d903cfcdcebbd1f8110822f53f9274e7  JAZZY-sample-upload-ui-20261111.4.tar.gz' | sha256sum -c -
           tar -xzf JAZZY-sample-upload-ui-20261111.4.tar.gz -C _site
+          curl --fail --silent --show-error --retry 3 -o JAZZY-fx-defaults-20261111.4.tar.gz https://raw.githubusercontent.com/JazzyRhythmer/Rhythmer/475e14785d7a44e9926edd9944b5835ed6a11d91/JAZZY-fx-defaults-20261111.4.tar.gz
+          echo '810a5599c503acb223206e4df2fdffdf7b2490772e08444db20abe018b16467d  JAZZY-fx-defaults-20261111.4.tar.gz' | sha256sum -c -
+          tar -xzf JAZZY-fx-defaults-20261111.4.tar.gz -C _site
+          (cd _site/downloads && sha256sum -c FX-SHA256SUMS.txt)
       - uses: actions/upload-pages-artifact@v4
         with:
           path: _site
