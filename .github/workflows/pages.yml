@@ -167,6 +167,11 @@ jobs:
           grep -F 'href="../editor/?target=browser">EDITOR</a>' _site/installer/index.html
           grep -F 'href="../editor/?target=browser">Editor</a>' _site/manual/index.html
 
+          curl --fail --silent --show-error --retry 3 -o JAZZY-sample-guide-20261111.tar.gz https://raw.githubusercontent.com/JazzyRhythmer/Rhythmer/4b799e4b95e02adc31f3d449134ed097d453e834/JAZZY-sample-guide-20261111.tar.gz
+          echo '2a89850614280976682d050aec1c5eaf7c78cc70f298a7390a0286acbae03a36  JAZZY-sample-guide-20261111.tar.gz' | sha256sum -c -
+          tar -xzf JAZZY-sample-guide-20261111.tar.gz -C _site
+          grep -F 'id="samples"' _site/manual/index.html
+          grep -F 'sample-guide-20261111' _site/editor/index.html
           cd _site/downloads
           cat update-SHA256SUMS.txt startup-SHA256SUMS.txt >> SHA256SUMS.txt
           sha256sum "$editor_source" >> SHA256SUMS.txt
