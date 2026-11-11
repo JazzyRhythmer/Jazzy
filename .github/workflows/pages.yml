@@ -160,6 +160,13 @@ jobs:
           echo 'c4b5c2bba4aa99d79cc566b072671fda108f81bbcd875d8d6e8397550100d024  JAZZY-fullwidth-sessions-20261111.tar.gz' | sha256sum -c -
           tar -xzf JAZZY-fullwidth-sessions-20261111.tar.gz -C _site
           grep -F 'performance-videos.css?v=2d487d76c0e7' _site/index.html
+          curl --fail --silent --show-error --retry 3 -o JAZZY-editor-links-20261111.tar.gz https://raw.githubusercontent.com/JazzyRhythmer/Rhythmer/40d2d48114a626d63d2978def5d172a413cd86cd/JAZZY-editor-links-20261111.tar.gz
+          echo 'd5df9c5df6dfeb46622b4abd80e829045aaec16390a94359e8c976059ddc130c  JAZZY-editor-links-20261111.tar.gz' | sha256sum -c -
+          tar -xzf JAZZY-editor-links-20261111.tar.gz -C _site
+          grep -F 'href="editor/?target=browser">Editor</a>' _site/index.html
+          grep -F 'href="../editor/?target=browser">EDITOR</a>' _site/installer/index.html
+          grep -F 'href="../editor/?target=browser">Editor</a>' _site/manual/index.html
+
           cd _site/downloads
           cat update-SHA256SUMS.txt startup-SHA256SUMS.txt >> SHA256SUMS.txt
           sha256sum "$editor_source" >> SHA256SUMS.txt
