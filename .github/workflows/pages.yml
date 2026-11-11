@@ -151,6 +151,11 @@ jobs:
           echo 'af401ce34d349cf6a56a926ec62fccda365713be200ab34b2d06b349d7f7ddaa  JAZZY-usb-clock-sync-20261111.tar.gz' | sha256sum -c -
           tar -xzf JAZZY-usb-clock-sync-20261111.tar.gz -C _site
           python3 -c 'import hashlib, json, pathlib; root=pathlib.Path("_site"); m=json.load(open(root/"installer/manifest.json"))["jazzy"]; fw=(root/"installer"/m["url"].split("?")[0]).read_bytes(); assert m["build"] == "20261111.2" and len(fw) == m["bytes"] and hashlib.sha256(fw).hexdigest() == m["sha256"] == json.load(open(root/"editor/factory-seed.json"))["hash"] == json.load(open(root/"release.json"))["sha256"]'
+          curl --fail --silent --show-error --retry 3 -o JAZZY-live-sessions-20261111.tar.gz https://raw.githubusercontent.com/JazzyRhythmer/Rhythmer/228ff859dcbb4165b4595530ee7a22c65fda03b9/JAZZY-live-sessions-20261111.tar.gz
+          echo '20dbd0133a754282afdfbedcc7cef9c5b69bf432d91fc9eec3ac228c622c1a3b  JAZZY-live-sessions-20261111.tar.gz' | sha256sum -c -
+          tar -xzf JAZZY-live-sessions-20261111.tar.gz -C _site
+          grep -F 'youtube-nocookie.com/embed/3QUPD_offSk' _site/index.html
+          test -s _site/performance-videos.css
           cd _site/downloads
           cat update-SHA256SUMS.txt startup-SHA256SUMS.txt >> SHA256SUMS.txt
           sha256sum "$editor_source" >> SHA256SUMS.txt
