@@ -172,10 +172,6 @@ jobs:
           tar -xzf JAZZY-sample-guide-20261111.tar.gz -C _site
           grep -F 'id="samples"' _site/manual/index.html
           grep -F 'sample-guide-20261111' _site/editor/index.html
-          curl --fail --silent --show-error --retry 3 -o JAZZY-multi-break-20261111.3.tar.gz https://raw.githubusercontent.com/JazzyRhythmer/Rhythmer/4dac60eaeddb6072138b6d122d35be580288862e/JAZZY-multi-break-20261111.3.tar.gz
-          echo '9c64b69d5b9184f448f95cb8a4eef69c20d199b773d100b4cfc2f15213c730b3  JAZZY-multi-break-20261111.3.tar.gz' | sha256sum -c -
-          tar -xzf JAZZY-multi-break-20261111.3.tar.gz -C _site
-          (cd _site/downloads && sha256sum -c MULTIBREAK-SHA256SUMS.txt)
           cd _site/downloads
           cat update-SHA256SUMS.txt startup-SHA256SUMS.txt >> SHA256SUMS.txt
           sha256sum "$editor_source" >> SHA256SUMS.txt
@@ -189,19 +185,12 @@ jobs:
           echo '84899dae54d489a1afa827ec01647260291cd08678f9f94a9479ab9324386277  JAZZY-0.1.0-beta.1-20261109.3.fwsc' >> SHA256SUMS.txt
           sha256sum "$source_file" "$fixes_source" "$sidechain_source" >> SHA256SUMS.txt
           sha256sum -c SHA256SUMS.txt
-          sha256sum JAZZY-0.1.0-beta.1-20261111.3.fwsc JAZZY-0.1.0-beta.1-20261111.3-source.tar.gz >> SHA256SUMS.txt
-          sed -i 's/sha=19fbfb49ad2a/sha=0fea5d35b9a2/g; s@downloads/SHA256SUMS.txt@downloads/MULTIBREAK-SHA256SUMS.txt@g' ../installer/index.html
           cd ../..
-          curl --fail --silent --show-error --retry 3 -o JAZZY-sample-upload-ui-20261111.4.tar.gz https://raw.githubusercontent.com/JazzyRhythmer/Rhythmer/3b87c28378c64d47e74cb10d7662b48c950df3ae/JAZZY-sample-upload-ui-20261111.4.tar.gz
-          echo '16ee3b1cb65abd121628a318463cb8b8d903cfcdcebbd1f8110822f53f9274e7  JAZZY-sample-upload-ui-20261111.4.tar.gz' | sha256sum -c -
-          tar -xzf JAZZY-sample-upload-ui-20261111.4.tar.gz -C _site
-          curl --fail --silent --show-error --retry 3 -o JAZZY-fx-defaults-20261111.4.tar.gz https://raw.githubusercontent.com/JazzyRhythmer/Rhythmer/475e14785d7a44e9926edd9944b5835ed6a11d91/JAZZY-fx-defaults-20261111.4.tar.gz
-          echo '810a5599c503acb223206e4df2fdffdf7b2490772e08444db20abe018b16467d  JAZZY-fx-defaults-20261111.4.tar.gz' | sha256sum -c -
-          tar -xzf JAZZY-fx-defaults-20261111.4.tar.gz -C _site
-          (cd _site/downloads && sha256sum -c FX-SHA256SUMS.txt)
-          curl --fail --silent --show-error --retry 3 -o JAZZY-installer-recognition-20261112.tar.gz https://raw.githubusercontent.com/JazzyRhythmer/Rhythmer/ec8bfadc1174eb40e066b60baf1b027292c71c20/JAZZY-installer-recognition-20261112.tar.gz
-          echo '02ff9985d5e7c469cec3905eaa1e4525056f7949dec93a1032aedbc70e0a980c  JAZZY-installer-recognition-20261112.tar.gz' | sha256sum -c -
-          tar -xzf JAZZY-installer-recognition-20261112.tar.gz -C _site
+          curl --fail --silent --show-error --retry 3 -o JAZZY-single-break-restored-20261112.1.tar.gz https://raw.githubusercontent.com/JazzyRhythmer/Rhythmer/61e4db6e83111249d231012f1ebb3d253251bbd2/JAZZY-single-break-restored-20261112.1.tar.gz
+          echo '9a32384602c84713ca062069fc0f969992ad72cf8c8079ca47f15ebac63d05f2  JAZZY-single-break-restored-20261112.1.tar.gz' | sha256sum -c -
+          tar -xzf JAZZY-single-break-restored-20261112.1.tar.gz -C _site
+          (cd _site/downloads && sha256sum -c SINGLE-BREAK-SHA256SUMS.txt)
+          cp _site/downloads/SINGLE-BREAK-SHA256SUMS.txt _site/downloads/SHA256SUMS.txt
       - uses: actions/upload-pages-artifact@v4
         with:
           path: _site
