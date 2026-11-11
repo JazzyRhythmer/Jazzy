@@ -6,6 +6,12 @@
 
 [**Explore the engines**](https://jazzyrhythmer.github.io/Jazzy/#engines) · [**Play in your browser**](https://jazzyrhythmer.github.io/Jazzy/emulator/) · [**Install JAZZY**](https://jazzyrhythmer.github.io/Jazzy/installer/) · [Field manual](https://jazzyrhythmer.github.io/Jazzy/manual/) · [Releases](https://github.com/JazzyRhythmer/Jazzy/releases)
 
+## Multi-Break · build 20261111.3
+
+Break can now run on several tracks, sharing only the two A/B sample banks. Each track keeps its own chops, pitch, filter, repeats and modulation. GEN targets T1–T6 directly and shows Break controls when the selected track uses Break. Both factory Break banks remain included.
+
+[Install](https://jazzyrhythmer.github.io/Jazzy/installer/) · [Web Play](https://jazzyrhythmer.github.io/Jazzy/emulator/?fw=jazzy) · [Multi-Break guide](https://jazzyrhythmer.github.io/Jazzy/manual/#multi-break) · [Complete corresponding source](https://jazzyrhythmer.github.io/Jazzy/downloads/JAZZY-0.1.0-beta.1-20261111.3-source.tar.gz)
+
 ## Build 20261111.1 · Sidechain and Kick Link
 
 Choose an internal kick, a track, USB audio or a matching MIDI note as the trigger. **Kick Link** lets one FM‑1 running JAZZY or RHYTHMER trigger ducking on the other. Set attack, release and amount in **FX → MASTER → DUCK ENV**.
