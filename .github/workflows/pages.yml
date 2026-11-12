@@ -191,6 +191,9 @@ jobs:
           tar -xzf JAZZY-single-break-restored-20261112.1.tar.gz -C _site
           (cd _site/downloads && sha256sum -c SINGLE-BREAK-SHA256SUMS.txt)
           cp _site/downloads/SINGLE-BREAK-SHA256SUMS.txt _site/downloads/SHA256SUMS.txt
+          curl --fail --silent --show-error --retry 3 -o JAZZY-installer-v15-v16-20261112.2.tar.gz https://raw.githubusercontent.com/JazzyRhythmer/Rhythmer/c3ba411de6ef5fd9655acb4df3e05f9c5b4f470a/JAZZY-installer-v15-v16-20261112.2.tar.gz
+          echo '54f2aea10bc52bc6af3060ae09645915a2785c4e10734e1d037fc246eff15c27  JAZZY-installer-v15-v16-20261112.2.tar.gz' | sha256sum -c -
+          tar -xzf JAZZY-installer-v15-v16-20261112.2.tar.gz -C _site
       - uses: actions/upload-pages-artifact@v4
         with:
           path: _site
