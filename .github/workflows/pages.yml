@@ -2,7 +2,7 @@ name: Deploy JAZZY website
 on:
   push:
     branches: [main]
-    paths: ['JAZZY-*-source.tar.gz', 'JAZZY-web-pad.tar.gz', 'JAZZY-web-launch-film.tar.gz', 'JAZZY-web-companion-and-installer.tar.gz.b64', 'JAZZY-preset-refresh-20261109.tar.gz.*.b64', 'JAZZY-web-play-ready.patch', 'JAZZY-fixes-20261109.2.tar.gz.*.b64', 'JAZZY-installer-checks.patch', 'JAZZY-sidechain-20261109.3.tar.gz.*.b64', 'JAZZY-community.patch', 'JAZZY-launch-daybreak.mp4', '.github/workflows/pages.yml']
+    paths: ['JAZZY-*-source.tar.gz', 'JAZZY-web-pad.tar.gz', 'JAZZY-web-launch-film.tar.gz', 'JAZZY-web-companion-and-installer.tar.gz.b64', 'JAZZY-preset-refresh-20261109.tar.gz.*.b64', 'JAZZY-web-play-ready.patch', 'JAZZY-fixes-20261109.2.tar.gz.*.b64', 'JAZZY-installer-checks.patch', 'JAZZY-sidechain-20261109.3.tar.gz.*.b64', 'JAZZY-community.patch', 'JAZZY-launch-daybreak.mp4', '.github/workflows/pages.yml', 'site-navigation/**']
   workflow_dispatch:
 permissions:
   contents: read
@@ -194,6 +194,8 @@ jobs:
           curl --fail --silent --show-error --retry 3 -o JAZZY-installer-v15-v16-20261112.2.tar.gz https://raw.githubusercontent.com/JazzyRhythmer/Rhythmer/c3ba411de6ef5fd9655acb4df3e05f9c5b4f470a/JAZZY-installer-v15-v16-20261112.2.tar.gz
           echo '54f2aea10bc52bc6af3060ae09645915a2785c4e10734e1d037fc246eff15c27  JAZZY-installer-v15-v16-20261112.2.tar.gz' | sha256sum -c -
           tar -xzf JAZZY-installer-v15-v16-20261112.2.tar.gz -C _site
+      - name: Apply shared platform navigation
+        run: python3 site-navigation/apply.py _site jazzy
       - uses: actions/upload-pages-artifact@v4
         with:
           path: _site
