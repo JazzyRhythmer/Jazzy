@@ -14,7 +14,7 @@ def header(site):
  def link(key,url,label):return f'<a href="{url}" aria-label="{label}"'+(' aria-current="page"' if key==site else '')+'>'+('JAZZY' if key=='jazzy' else 'RHYTHMER')+'</a>'
  platform='<div class="jr-platform-switcher" role="navigation" aria-label="Firmware platforms"><div class="jr-platform-group" role="group" aria-label="Firmware for FM-1"><span class="jr-platform-label">FOR FM-1</span><div class="jr-platform-links">'+link('jazzy',SITES['jazzy']['root'],'JAZZY for FM-1')+link('rhythmer',SITES['rhythmer']['root']+'#home','RHYTHMER for FM-1')+'</div></div><div class="jr-platform-group" role="group" aria-label="Firmware for MPC Sample"><span class="jr-platform-label">FOR MPC SAMPLE</span><div class="jr-platform-links">'+link('mpc',SITES['mpc']['root']+'#home','RHYTHMER OS for MPC Sample')+'</div></div></div>'
  nav='<nav class="jr-section-nav" aria-label="Site sections">'+''.join(f'<a data-section="{id}" href="{root+path}">{label}</a>' for label,id,path in zip(LABELS,IDS,s['sections']))+'</nav>'
- return f'<header class="jr-site-header {s["legacy"]}"><a class="jr-brand" href="{root+s["sections"][0]}">{icon}<span>{s["name"]}<small>{s["platform"]}</small></span></a>'+platform+nav+'</header>'
+ return f'<header class="jr-site-header {s["legacy"]}"><a class="jr-brand" href="{root+s["sections"][0]}">{icon}<span>{s["name"]}</span><small>{s["platform"].replace("FOR ","for ")}</small></a>'+nav+platform+'</header>'
 
 def apply(root,site,subpages=True):
  root=Path(root);assets=Path(__file__).resolve().parent
@@ -43,6 +43,6 @@ def apply(root,site,subpages=True):
   data=re.sub(r'<header\b.*?</header>',replacement+utility,data,count=1,flags=re.S)
   data=re.sub(r'<link[^>]+href="[^\"]*platform-navigation\.css[^\"]*"[^>]*>','',data)
   data=re.sub(r'<script[^>]+src="[^\"]*platform-navigation\.js[^\"]*"[^>]*></script>','',data)
-  data=data.replace('</head>',f'<link rel="stylesheet" href="{prefix}platform-navigation.css?v=platforms2"><script src="{prefix}platform-navigation.js?v=platforms2" defer></script></head>')
+  data=data.replace('</head>',f'<link rel="stylesheet" href="{prefix}platform-navigation.css?v=platforms3"><script src="{prefix}platform-navigation.js?v=platforms3" defer></script></head>')
   path.write_text(data);print('Updated navigation:',path.relative_to(root))
 if __name__=='__main__':apply(sys.argv[1],sys.argv[2])
