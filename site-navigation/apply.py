@@ -43,6 +43,6 @@ def apply(root,site,subpages=True):
   data=re.sub(r'<header\b.*?</header>',replacement+utility,data,count=1,flags=re.S)
   data=re.sub(r'<link[^>]+href="[^\"]*platform-navigation\.css[^\"]*"[^>]*>','',data)
   data=re.sub(r'<script[^>]+src="[^\"]*platform-navigation\.js[^\"]*"[^>]*></script>','',data)
-  data=data.replace('</head>',f'<link rel="stylesheet" href="{prefix}platform-navigation.css?v=platforms5"><script src="{prefix}platform-navigation.js?v=platforms5" defer></script></head>')
+  data=data.replace('</head>',f'<link rel="stylesheet" href="{prefix}platform-navigation.css?v=platforms6"><script src="{prefix}platform-navigation.js?v=platforms6" defer></script></head>')
   path.write_text(data);print('Updated navigation:',path.relative_to(root))
 if __name__=='__main__':apply(sys.argv[1],sys.argv[2])
