@@ -46,3 +46,5 @@ Use the [web installer](https://jazzyrhythmer.github.io/Jazzy/installer/) for th
 See [build instructions](BUILDING.md) and the [source archive](JAZZY-0.1.0-beta.1-source.tar.gz). JAZZY is free and open source, developed by [Jazzy Rhythmer](https://jazzyrhythmer.github.io/) on the Rhythmer and JIANT foundation. Original credits and [GPL-3.0](LICENSE) notices remain. LXR factory preset data and the Amen/Think recordings have separate rights; see the [licensing notes](LICENSING.md), [LXR credits](https://jazzyrhythmer.github.io/Jazzy/manual/#lxr-credits) and [audio credits](THIRD-PARTY-AUDIO.txt).
 
 **Same instrument, different focus.** [Rhythmer](https://github.com/JazzyRhythmer/Rhythmer) is the companion firmware for building and performing grooves, with drum kits, track and Break generators, and a project editor.
+
+You can also try Jazzy in the browser, no flashing needed, in the free community [FM-1 Emulator](https://fm1-emulator.atst.tools/).
