@@ -6,9 +6,6 @@
 
 [**Explore the engines**](https://jazzyrhythmer.github.io/jazzy/#engines) · [**Play in your browser**](https://jazzyrhythmer.github.io/jazzy/emulator/) · [**Install JAZZY**](https://jazzyrhythmer.github.io/jazzy/installer/) · [Field manual](https://jazzyrhythmer.github.io/jazzy/manual/) · [Releases](https://github.com/JazzyRhythmer/jazzy/releases)
 
-## Playback base restored · 20261112.1
-
-Restored from the preserved JAZZY 20261111.2 source. Only HYDRA high-note legato, LXR track ENV and the factory-send default changes are applied. Break occupies one track; Amen A and Think B remain included. All 31 engines and 1,221 factory sounds remain. [Release notes and verification](https://jazzyrhythmer.github.io/jazzy/downloads/SINGLE-BREAK-20261112.1.md) · [Complete source and selected patch](https://jazzyrhythmer.github.io/jazzy/downloads/JAZZY-0.1.0-beta.1-20261112.1-source.tar.gz).
 
 ## Build 20261111.1 · Sidechain and Kick Link
 
