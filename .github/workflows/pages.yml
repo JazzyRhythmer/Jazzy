@@ -194,6 +194,13 @@ jobs:
           curl --fail --silent --show-error --retry 3 -o JAZZY-installer-v15-v16-20261112.2.tar.gz https://raw.githubusercontent.com/jazzyrhythmer/rhythmer/c3ba411de6ef5fd9655acb4df3e05f9c5b4f470a/JAZZY-installer-v15-v16-20261112.2.tar.gz
           echo '54f2aea10bc52bc6af3060ae09645915a2785c4e10734e1d037fc246eff15c27  JAZZY-installer-v15-v16-20261112.2.tar.gz' | sha256sum -c -
           tar -xzf JAZZY-installer-v15-v16-20261112.2.tar.gz -C _site
+      - name: Installer reliability and manual overlay 20261116.1
+        run: |
+          curl --fail --silent --show-error --retry 3 -o JAZZY-installer-maintenance-20261116.1.tar.gz https://raw.githubusercontent.com/jazzyrhythmer/rhythmer/fc113a1c3d6d5ad5b746d5b280c2c1cb38f4651c/JAZZY-installer-maintenance-20261116.1.tar.gz
+          echo 'b8bf711c7c908bf6b75c737e359afd97537f865d4974a4e9f789076f56ea840c  JAZZY-installer-maintenance-20261116.1.tar.gz' | sha256sum -c -
+          tar -xzf JAZZY-installer-maintenance-20261116.1.tar.gz -C _site
+          grep -F 'installer-20261116.1' _site/installer/install-safety.mjs
+          python3 -c 'import json; d=json.load(open("_site/release.json")); assert d["sha256"]=="bd80190ca19df53e3de7a853da8e5ba70d7778c4ee6f6241d42b5a575526b913"'
       - name: Apply shared platform navigation
         run: python3 site-navigation/apply.py _site jazzy
       - uses: actions/upload-pages-artifact@v4
