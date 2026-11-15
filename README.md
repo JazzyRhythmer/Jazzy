@@ -41,8 +41,20 @@ The GIFs show the firmware screens. [Hear the patches and drum demo on the websi
 
 ## Install and build
 
-Use the [web installer](https://jazzyrhythmer.github.io/Jazzy/installer/) for the current build and official V15 recovery. **Back up projects, settings and samples first.** Go through official V15 when changing firmware families. The installer and the [GitHub release](https://github.com/JazzyRhythmer/Jazzy/releases/tag/v0.1.0-beta.1-20261111.1) list their package details separately.
+Use the [web installer](https://jazzyrhythmer.github.io/Jazzy/installer/) for the current build and official V15 recovery. **Back up projects, settings and samples first.** Go through official V15 when changing firmware families. The installer and the [GitHub release](https://github.com/JazzyRhythmer/Jazzy/releases) list their package details separately.
 
 See [build instructions](BUILDING.md) and the [source archive](JAZZY-0.1.0-beta.1-source.tar.gz). JAZZY is free and open source, developed by [Jazzy Rhythmer](https://jazzyrhythmer.github.io/) on the Rhythmer and JIANT foundation. Original credits and [GPL-3.0](LICENSE) notices remain. LXR factory preset data and the Amen/Think recordings have separate rights; see the [licensing notes](LICENSING.md), [LXR credits](https://jazzyrhythmer.github.io/Jazzy/manual/#lxr-credits) and [audio credits](THIRD-PARTY-AUDIO.txt).
 
 **Same instrument, different focus.** [Rhythmer](https://github.com/JazzyRhythmer/Rhythmer) is the companion firmware for building and performing grooves, with drum kits, track and Break generators, and a project editor.
+
+<!-- JAZZY-RHYTHMER-PORTFOLIO:START -->
+## More from Jazzy Rhythmer
+
+**For MPC Sample:** [RHYTHMER OS](https://jazzyrhythmer.github.io/mpc-sample/) · **For FM-1:** [JAZZY](https://jazzyrhythmer.github.io/Jazzy/) / [RHYTHMER](https://jazzyrhythmer.github.io/Rhythmer/)
+
+**JR Audio Software** — in development, expected in 2027: [JR ACID](https://jazzyrhythmer.github.io/software.html#jr-acid) · [JR FX](https://jazzyrhythmer.github.io/software.html#jr-fx) · [JR SMPL](https://jazzyrhythmer.github.io/software.html#jr-smpl) · [JR RYTM](https://jazzyrhythmer.github.io/software.html#jr-rytm) · [JR DRAW](https://jazzyrhythmer.github.io/software.html#jr-draw) · [JR PLAY](https://jazzyrhythmer.github.io/software.html#jr-play) · [JR TREK](https://jazzyrhythmer.github.io/software.html#jr-trek).
+
+[Main website](https://jazzyrhythmer.github.io/) · [Ko-fi](https://ko-fi.com/jazzyrhythmer) · [Patreon](https://www.patreon.com/JazzyRhythmer/) · [Studio Notes & email updates](https://jazzyrhythmer.github.io/#notes) · [YouTube](https://www.youtube.com/@jazzyrhythmer) · [Instagram](https://www.instagram.com/jazzyrhythmer/)
+
+Voluntary support helps me keep making music, instruments and open-source tools. Thank you for being part of it.
+<!-- JAZZY-RHYTHMER-PORTFOLIO:END -->
