@@ -19,6 +19,8 @@ def header(site):
 def apply(root,site,subpages=True):
  root=Path(root);assets=Path(__file__).resolve().parent
  for name in ('platform-navigation.css','platform-navigation.js'):shutil.copy2(assets/name,root/name)
+ import runpy
+ runpy.run_path(str(assets/'support.py'))['apply_support'](root,site)
  targets=[root/'index.html']
  if subpages:targets += [root/'manual/index.html',root/'manual/quickstart.html',root/'installer/index.html']
  for path in targets:
@@ -43,6 +45,6 @@ def apply(root,site,subpages=True):
   data=re.sub(r'<header\b.*?</header>',replacement+utility,data,count=1,flags=re.S)
   data=re.sub(r'<link[^>]+href="[^\"]*platform-navigation\.css[^\"]*"[^>]*>','',data)
   data=re.sub(r'<script[^>]+src="[^\"]*platform-navigation\.js[^\"]*"[^>]*></script>','',data)
-  data=data.replace('</head>',f'<link rel="stylesheet" href="{prefix}platform-navigation.css?v=platforms6"><script src="{prefix}platform-navigation.js?v=platforms6" defer></script></head>')
+  data=data.replace('</head>',f'<link rel="stylesheet" href="{prefix}platform-navigation.css?v=support1"><script src="{prefix}platform-navigation.js?v=support1" defer></script></head>')
   path.write_text(data);print('Updated navigation:',path.relative_to(root))
 if __name__=='__main__':apply(sys.argv[1],sys.argv[2])
