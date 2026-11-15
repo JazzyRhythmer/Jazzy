@@ -5,7 +5,8 @@ KOFI='https://ko-fi.com/jazzyrhythmer';PATREON='https://www.patreon.com/JazzyRhy
 def invitation(site):
  name={'jazzy':'JAZZY','rhythmer':'RHYTHMER','mpc':'RHYTHMER OS for MPC Sample'}[site]
  first=f'{name} is free and open source, and will always be free.' if site!='mpc' else f'{name} will be free and open source, and will always stay free.'
- return f'''<div class="jr-support-copy"><h2>Support the project</h2><p>{first} If you find it useful, a donation of any size would be appreciated. You can choose the amount on the next page.</p><div class="jr-support-actions"><a class="jr-support-tip" href="{KOFI}" target="_blank" rel="noopener noreferrer">Donate via Ko-fi ↗</a></div><p class="jr-support-ongoing">You can also <a href="{PATREON}" target="_blank" rel="noopener noreferrer">support my work on Patreon ↗</a>.</p></div>'''
+ heading_id=' id="support-title"' if site=='jazzy' else ''
+ return f'''<div class="jr-support-copy"><h2{heading_id}>Support the project</h2><p>{first} If you find it useful, a donation of any size would be appreciated. You can choose the amount on the next page.</p><div class="jr-support-actions"><a class="jr-support-tip" href="{KOFI}" target="_blank" rel="noopener noreferrer">Donate via Ko-fi ↗</a></div><p class="jr-support-ongoing">You can also <a href="{PATREON}" target="_blank" rel="noopener noreferrer">support my work on Patreon ↗</a>.</p></div>'''
 
 def apply_support(root,site):
  root=Path(root);p=root/'index.html'
