@@ -30,3 +30,11 @@ def apply_support(root,site):
   p=root/'app.js';s=p.read_text();s=re.sub(r'(<div class="support-content">)(?:<section(?: class="jr-support-host")?>).*?</section>',lambda m:m[1]+'<section class="jr-support-host">'+invitation(site)+'</section>',s,count=1,flags=re.S)
   s=s.replace('Help keep Rhythmer free and moving forward.','Free to use. Support is always optional.')
   p.write_text(s)
+
+  p=root/'landing.mjs'
+  if p.exists():
+   s=p.read_text()
+   block='<section class="support-strip jr-home-support">'+invitation(site)+'<a class="text-link" href="#support">Music &amp; studio links →</a></section>'
+   s=re.sub(r'<section class="support-strip(?: jr-home-support)?">.*?</section>',lambda m:block,s,count=1,flags=re.S)
+   p.write_text(s)
+  p=root/'app.js';s=p.read_text().replace('landing.mjs?v=single-break-20261112.1','landing.mjs?v=support-placement3');p.write_text(s)
