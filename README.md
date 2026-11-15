@@ -1,32 +1,32 @@
 # JAZZY
 
-[![JAZZY — Explore the unheard. Startup and HYDRA screens from the FM-1 firmware.](docs/github/hero.png)](https://jazzyrhythmer.github.io/Jazzy/)
+[![JAZZY — Explore the unheard. Startup and HYDRA screens from the FM-1 firmware.](docs/github/hero.png)](https://jazzyrhythmer.github.io/jazzy/)
 
 **Explore the unheard.** Play a phrase on a new engine and see where it takes you. JAZZY turns the M‑VAVE FM‑1 into a sound exploration instrument with **31 engines and over 1,200 factory sounds**. Give each track one sound, then build a part around it.
 
-[**Explore the engines**](https://jazzyrhythmer.github.io/Jazzy/#engines) · [**Play in your browser**](https://jazzyrhythmer.github.io/Jazzy/emulator/) · [**Install JAZZY**](https://jazzyrhythmer.github.io/Jazzy/installer/) · [Field manual](https://jazzyrhythmer.github.io/Jazzy/manual/) · [Releases](https://github.com/JazzyRhythmer/Jazzy/releases)
+[**Explore the engines**](https://jazzyrhythmer.github.io/jazzy/#engines) · [**Play in your browser**](https://jazzyrhythmer.github.io/jazzy/emulator/) · [**Install JAZZY**](https://jazzyrhythmer.github.io/jazzy/installer/) · [Field manual](https://jazzyrhythmer.github.io/jazzy/manual/) · [Releases](https://github.com/JazzyRhythmer/jazzy/releases)
 
 ## Playback base restored · 20261112.1
 
-Restored from the preserved JAZZY 20261111.2 source. Only HYDRA high-note legato, LXR track ENV and the factory-send default changes are applied. Break occupies one track; Amen A and Think B remain included. All 31 engines and 1,221 factory sounds remain. [Release notes and verification](https://jazzyrhythmer.github.io/Jazzy/downloads/SINGLE-BREAK-20261112.1.md) · [Complete source and selected patch](https://jazzyrhythmer.github.io/Jazzy/downloads/JAZZY-0.1.0-beta.1-20261112.1-source.tar.gz).
+Restored from the preserved JAZZY 20261111.2 source. Only HYDRA high-note legato, LXR track ENV and the factory-send default changes are applied. Break occupies one track; Amen A and Think B remain included. All 31 engines and 1,221 factory sounds remain. [Release notes and verification](https://jazzyrhythmer.github.io/jazzy/downloads/SINGLE-BREAK-20261112.1.md) · [Complete source and selected patch](https://jazzyrhythmer.github.io/jazzy/downloads/JAZZY-0.1.0-beta.1-20261112.1-source.tar.gz).
 
 ## Build 20261111.1 · Sidechain and Kick Link
 
 Choose an internal kick, a track, USB audio or a matching MIDI note as the trigger. **Kick Link** lets one FM‑1 running JAZZY or RHYTHMER trigger ducking on the other. Set attack, release and amount in **FX → MASTER → DUCK ENV**.
 
-This build also includes USB MIDI Host, 31 refreshed pixel scenes with individual backdrops, note-driven TRIO animation, and the earlier attack and mixer headroom fixes. [What’s new](https://jazzyrhythmer.github.io/Jazzy/#update) · [Sidechain and Kick Link guide](https://jazzyrhythmer.github.io/Jazzy/manual/#duck)
+This build also includes USB MIDI Host, 31 refreshed pixel scenes with individual backdrops, note-driven TRIO animation, and the earlier attack and mixer headroom fixes. [What’s new](https://jazzyrhythmer.github.io/jazzy/#update) · [Sidechain and Kick Link guide](https://jazzyrhythmer.github.io/jazzy/manual/#duck)
 
 ## The engine room
 
 | FMINI-1 · Bass & leads | OberVave · Analog poly |
 | --- | --- |
-| ![FMINI-1 skater animation reacting to notes](https://jazzyrhythmer.github.io/Jazzy/assets/engine-23.webp?v=20261111.1) | ![OberVave animated firmware display](https://jazzyrhythmer.github.io/Jazzy/assets/engine-24.webp?v=20261111.1) |
+| ![FMINI-1 skater animation reacting to notes](https://jazzyrhythmer.github.io/jazzy/assets/engine-23.webp?v=20261111.1) | ![OberVave animated firmware display](https://jazzyrhythmer.github.io/jazzy/assets/engine-24.webp?v=20261111.1) |
 | Three-oscillator analog voicing, from rounded bass to sharper leads. | Resonant analog colours for keys, brass and moving pads. |
 | **HYDRA · Digital textures** | **LXR · Drum synthesis** |
-| ![HYDRA animated firmware display](https://jazzyrhythmer.github.io/Jazzy/assets/engine-41.webp?v=20261111.1) | ![LXR wrecking ball animation reacting to hits](https://jazzyrhythmer.github.io/Jazzy/assets/engine-42.webp?v=20261111.1) |
+| ![HYDRA animated firmware display](https://jazzyrhythmer.github.io/jazzy/assets/engine-41.webp?v=20261111.1) | ![LXR wrecking ball animation reacting to hits](https://jazzyrhythmer.github.io/jazzy/assets/engine-42.webp?v=20261111.1) |
 | Wavetable and mutation-inspired tones that shift under the fingers. | Browse individual voices drawn from 85 LXR factory sets. |
 
-The GIFs show the firmware screens. [Hear the patches and drum demo on the website](https://jazzyrhythmer.github.io/Jazzy/#hear) or [browse all 31 engines](https://jazzyrhythmer.github.io/Jazzy/#engine-catalog).
+The GIFs show the firmware screens. [Hear the patches and drum demo on the website](https://jazzyrhythmer.github.io/jazzy/#hear) or [browse all 31 engines](https://jazzyrhythmer.github.io/jazzy/#engine-catalog).
 
 ## Put a sound in motion
 
@@ -37,20 +37,20 @@ The GIFs show the firmware screens. [Hear the patches and drum demo on the websi
 
 ## JAZZY in motion
 
-[![Watch the JAZZY launch film](docs/github/film.jpg)](https://jazzyrhythmer.github.io/Jazzy/#opening)
+[![Watch the JAZZY launch film](docs/github/film.jpg)](https://jazzyrhythmer.github.io/jazzy/#opening)
 
 ## Install and build
 
-Use the [web installer](https://jazzyrhythmer.github.io/Jazzy/installer/) for the current build and official V15 recovery. **Back up projects, settings and samples first.** Go through official V15 when changing firmware families. The installer and the [GitHub release](https://github.com/JazzyRhythmer/Jazzy/releases) list their package details separately.
+Use the [web installer](https://jazzyrhythmer.github.io/jazzy/installer/) for the current build and official V15 recovery. **Back up projects, settings and samples first.** Go through official V15 when changing firmware families. The installer and the [GitHub release](https://github.com/JazzyRhythmer/jazzy/releases) list their package details separately.
 
-See [build instructions](BUILDING.md) and the [source archive](JAZZY-0.1.0-beta.1-source.tar.gz). JAZZY is free and open source, developed by [Jazzy Rhythmer](https://jazzyrhythmer.github.io/) on the Rhythmer and JIANT foundation. Original credits and [GPL-3.0](LICENSE) notices remain. LXR factory preset data and the Amen/Think recordings have separate rights; see the [licensing notes](LICENSING.md), [LXR credits](https://jazzyrhythmer.github.io/Jazzy/manual/#lxr-credits) and [audio credits](THIRD-PARTY-AUDIO.txt).
+See [build instructions](BUILDING.md) and the [source archive](JAZZY-0.1.0-beta.1-source.tar.gz). JAZZY is free and open source, developed by [Jazzy Rhythmer](https://jazzyrhythmer.github.io/) on the Rhythmer and JIANT foundation. Original credits and [GPL-3.0](LICENSE) notices remain. LXR factory preset data and the Amen/Think recordings have separate rights; see the [licensing notes](LICENSING.md), [LXR credits](https://jazzyrhythmer.github.io/jazzy/manual/#lxr-credits) and [audio credits](THIRD-PARTY-AUDIO.txt).
 
-**Same instrument, different focus.** [Rhythmer](https://github.com/JazzyRhythmer/Rhythmer) is the companion firmware for building and performing grooves, with drum kits, track and Break generators, and a project editor.
+**Same instrument, different focus.** [Rhythmer](https://github.com/JazzyRhythmer/rhythmer) is the companion firmware for building and performing grooves, with drum kits, track and Break generators, and a project editor.
 
 <!-- JAZZY-RHYTHMER-PORTFOLIO:START -->
 ## More from Jazzy Rhythmer
 
-**For MPC Sample:** [RHYTHMER OS](https://jazzyrhythmer.github.io/mpc-sample/) · **For FM-1:** [JAZZY](https://jazzyrhythmer.github.io/Jazzy/) / [RHYTHMER](https://jazzyrhythmer.github.io/Rhythmer/)
+**For MPC Sample:** [RHYTHMER OS](https://jazzyrhythmer.github.io/mpc-sample/) · **For FM-1:** [JAZZY](https://jazzyrhythmer.github.io/jazzy/) / [RHYTHMER](https://jazzyrhythmer.github.io/rhythmer/)
 
 **JR Audio Software** — in development, expected in 2027: [JR ACID](https://jazzyrhythmer.github.io/software.html#jr-acid) · [JR FX](https://jazzyrhythmer.github.io/software.html#jr-fx) · [JR SMPL](https://jazzyrhythmer.github.io/software.html#jr-smpl) · [JR RYTM](https://jazzyrhythmer.github.io/software.html#jr-rytm) · [JR DRAW](https://jazzyrhythmer.github.io/software.html#jr-draw) · [JR PLAY](https://jazzyrhythmer.github.io/software.html#jr-play) · [JR TREK](https://jazzyrhythmer.github.io/software.html#jr-trek).
 
