@@ -4,7 +4,7 @@
 
 **Explore the unheard.** Play a phrase on a new engine and see where it takes you. JAZZY turns the M‑VAVE FM‑1 into a sound exploration instrument with **31 engines and over 1,200 factory sounds**. Give each track one sound, then build a part around it.
 
-[**Explore the engines**](https://jazzyrhythmer.github.io/jazzy/#engines) · [**Play in your browser**](https://jazzyrhythmer.github.io/jazzy/emulator/) · [**Install JAZZY**](https://jazzyrhythmer.github.io/jazzy/installer/) · [Field manual](https://jazzyrhythmer.github.io/jazzy/manual/) · [Releases](https://github.com/JazzyRhythmer/jazzy/releases)
+[**Explore the engines**](https://jazzyrhythmer.github.io/jazzy/#engines) · [**Play in your browser**](https://jazzyrhythmer.github.io/jazzy/emulator/) · [**Install JAZZY**](https://jazzyrhythmer.github.io/jazzy/installer/) · [Field manual](https://jazzyrhythmer.github.io/jazzy/manual/) · [Releases](https://github.com/jazzyrhythmer/jazzy/releases)
 
 
 ## Build 20261111.1 · Sidechain and Kick Link
@@ -38,11 +38,11 @@ The GIFs show the firmware screens. [Hear the patches and drum demo on the websi
 
 ## Install and build
 
-Use the [web installer](https://jazzyrhythmer.github.io/jazzy/installer/) for the current build and official V15 recovery. **Back up projects, settings and samples first.** Go through official V15 when changing firmware families. The installer and the [GitHub release](https://github.com/JazzyRhythmer/jazzy/releases) list their package details separately.
+Use the [web installer](https://jazzyrhythmer.github.io/jazzy/installer/) for the current build and official V15 recovery. **Back up projects, settings and samples first.** Go through official V15 when changing firmware families. The installer and the [GitHub release](https://github.com/jazzyrhythmer/jazzy/releases) list their package details separately.
 
 See [build instructions](BUILDING.md) and the [source archive](JAZZY-0.1.0-beta.1-source.tar.gz). JAZZY is free and open source, developed by [Jazzy Rhythmer](https://jazzyrhythmer.github.io/) on the Rhythmer and JIANT foundation. Original credits and [GPL-3.0](LICENSE) notices remain. LXR factory preset data and the Amen/Think recordings have separate rights; see the [licensing notes](LICENSING.md), [LXR credits](https://jazzyrhythmer.github.io/jazzy/manual/#lxr-credits) and [audio credits](THIRD-PARTY-AUDIO.txt).
 
-**Same instrument, different focus.** [Rhythmer](https://github.com/JazzyRhythmer/rhythmer) is the companion firmware for building and performing grooves, with drum kits, track and Break generators, and a project editor.
+**Same instrument, different focus.** [Rhythmer](https://github.com/jazzyrhythmer/rhythmer) is the companion firmware for building and performing grooves, with drum kits, track and Break generators, and a project editor.
 
 <!-- JAZZY-RHYTHMER-PORTFOLIO:START -->
 ## More from Jazzy Rhythmer
