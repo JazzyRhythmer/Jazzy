@@ -210,6 +210,8 @@ jobs:
           s=p.read_text().replace('home.mjs?v=20261111.1','home.mjs?v=20261117.2').replace('engine-gallery.css?v=guide-cards','engine-gallery.css?v=20261117.2')
           p.write_text(s)
           PYCODE
+      - name: Apply sample editor reliability maintenance
+        run: cp site-sample-editor/* _site/editor/
       - name: Apply shared platform navigation
         run: python3 site-navigation/apply.py _site jazzy
       - uses: actions/upload-pages-artifact@v4
