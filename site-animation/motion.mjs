@@ -49,6 +49,14 @@ export function setupMotion(toggle) {
   return {
     add(img, visibleOnly = false) {
       img.dataset.still ||= img.getAttribute('src');
+      // A persistent still also covers the browser's source-swap decode frame.
+      const screen = img.parentElement;
+      if (screen?.classList.contains('screen') && img.dataset.still) {
+        screen.style.backgroundImage = `url(${JSON.stringify(new URL(img.dataset.still, document.baseURI).href)})`;
+        screen.style.backgroundSize = 'contain';
+        screen.style.backgroundPosition = 'center';
+        screen.style.backgroundRepeat = 'no-repeat';
+      }
       const loaded = () => { if (img.naturalWidth) img.dataset.ready = 'true'; };
       const error = () => { img.dataset.ready = 'error'; };
       img.addEventListener('load', loaded); img.addEventListener('error', error);
