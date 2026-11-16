@@ -2,6 +2,7 @@
 (()=>{
 function activeSection(current,links){
  const path=current.pathname.toLowerCase().replace(/index\.html$/,'');
+ if(/\/engine\.html$/.test(path))return 'engines';
  if(/\/manual\//.test(path))return 'manual';
  if(/\/installer\//.test(path))return 'start';
  const hash=current.hash.split('/')[0];

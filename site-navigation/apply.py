@@ -21,7 +21,7 @@ def apply(root,site,subpages=True):
  for name in ('platform-navigation.css','platform-navigation.js'):shutil.copy2(assets/name,root/name)
  import runpy
  runpy.run_path(str(assets/'support.py'))['apply_support'](root,site)
- targets=[root/'index.html']
+ targets=[root/'index.html',root/'engine.html']
  if subpages:targets += [root/'manual/index.html',root/'manual/quickstart.html',root/'installer/index.html']
  for path in targets:
   if not path.is_file():continue
