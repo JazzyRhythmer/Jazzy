@@ -1,5 +1,5 @@
 import { engines } from './catalog.mjs?v=20261111.1';
-import { setupMotion } from './motion.mjs?v=20261117.1';
+import { setupMotion } from './motion.mjs?v=20261117.2';
 
 const el = id => document.getElementById(id);
 const model = new URLSearchParams(location.search).get('model');

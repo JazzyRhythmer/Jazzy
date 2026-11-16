@@ -1,5 +1,5 @@
 import { engines } from './catalog.mjs?v=20261111.1';
-import { setupMotion } from './motion.mjs?v=20261117.1';
+import { setupMotion } from './motion.mjs?v=20261117.2';
 
 const grid = document.querySelector('#engine-grid');
 const guide = document.querySelector('#engine-guide');
