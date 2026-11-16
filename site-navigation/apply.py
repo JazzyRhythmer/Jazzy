@@ -4,8 +4,8 @@ from pathlib import Path
 from html.parser import HTMLParser
 import re,shutil,sys
 SITES={
-'jazzy':dict(name='JAZZY',platform='FOR FM-1',root='https://jazzyrhythmer.github.io/Jazzy/',logo='jazzy-mark.svg',sections=['','\x23engines','\x23patterns','installer/','manual/','\x23support'],legacy='top'),
-'rhythmer':dict(name='RHYTHMER',platform='FOR FM-1',root='https://jazzyrhythmer.github.io/Rhythmer/',logo='rhythmer-mark.svg',sections=['\x23home','\x23instrument','\x23companion','\x23install','\x23guide','\x23support'],legacy='topbar'),
+'jazzy':dict(name='JAZZY',platform='FOR FM-1',root='https://jazzyrhythmer.github.io/jazzy/',logo='jazzy-mark.svg',sections=['','\x23engines','\x23patterns','installer/','manual/','\x23support'],legacy='top'),
+'rhythmer':dict(name='RHYTHMER',platform='FOR FM-1',root='https://jazzyrhythmer.github.io/rhythmer/',logo='rhythmer-mark.svg',sections=['\x23home','\x23instrument','\x23companion','\x23install','\x23guide','\x23support'],legacy='topbar'),
 'mpc':dict(name='RHYTHMER OS',platform='FOR MPC SAMPLE',root='https://jazzyrhythmer.github.io/mpc-sample/',logo=None,sections=['\x23home','\x23engines','\x23workflow','\x23release','manual/','\x23studio'],legacy='')}
 LABELS=['OVERVIEW','ENGINES','FEATURES','GET STARTED','MANUAL','STUDIO'];IDS=['overview','engines','features','start','manual','studio']
 
@@ -45,6 +45,6 @@ def apply(root,site,subpages=True):
   data=re.sub(r'<header\b.*?</header>',replacement+utility,data,count=1,flags=re.S)
   data=re.sub(r'<link[^>]+href="[^\"]*platform-navigation\.css[^\"]*"[^>]*>','',data)
   data=re.sub(r'<script[^>]+src="[^\"]*platform-navigation\.js[^\"]*"[^>]*></script>','',data)
-  data=data.replace('</head>',f'<link rel="stylesheet" href="{prefix}platform-navigation.css?v=support-placement3"><script src="{prefix}platform-navigation.js?v=support-placement3" defer></script></head>')
+  data=data.replace('</head>',f'<link rel="stylesheet" href="{prefix}platform-navigation.css?v=support-placement4"><script src="{prefix}platform-navigation.js?v=support-placement4" defer></script></head>')
   path.write_text(data);print('Updated navigation:',path.relative_to(root))
 if __name__=='__main__':apply(sys.argv[1],sys.argv[2])
