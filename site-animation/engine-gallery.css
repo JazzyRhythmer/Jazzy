@@ -1,0 +1,111 @@
+.engine-gallery {
+  display: grid;
+  gap: 15px;
+}
+
+.engine-gallery-featured { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.engine-gallery-catalog {
+  grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
+  gap: 10px;
+}
+
+.engine-card {
+  display: block;
+  min-width: 0;
+  border: 1px solid var(--line);
+  background: var(--plate);
+  padding: 8px;
+}
+
+.engine-gallery-featured .engine-card { padding: 12px; }
+.engine-card:hover { border-color: var(--accent); }
+.engine-card .screen { display: block; }
+.engine-card-caption {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 4px 8px;
+  align-items: baseline;
+  padding: 9px 2px 2px;
+}
+
+.engine-card-name, .engine-zoom { font: 700 11px/1.35 var(--mono); color: var(--accent); }
+.engine-card-note {
+  grid-column: 1 / -1;
+  color: var(--muted);
+  font: 10px/1.4 var(--mono);
+}
+
+.engine-card[data-family="drum"] .engine-card-name,
+.engine-card[data-family="sample"] .engine-card-name { color: var(--warm); }
+.engine-gallery-featured .engine-card-name { font-size: 14px; }
+.engine-gallery-featured .engine-card-note { font: 14px/1.45 Arial, sans-serif; }
+.guide-card {
+  grid-column: span var(--guide-span, 1);
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+}
+.guide-card-face {
+  display: grid;
+  place-items: center;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  color: var(--accent);
+}
+.guide-card-face svg {
+  width: clamp(24px, 24%, 54px);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+}
+.fx-grid .guide-card { padding: 13px; }
+.fx-grid .guide-card .engine-card-caption { padding: 14px 2px 3px; gap: 7px 8px; }
+.fx-grid .guide-card .engine-card-name { font-size: 13px; }
+.fx-grid .guide-card .engine-card-note { font: 13px/1.45 Arial, sans-serif; }
+@media (width > 900px) {
+  .fx-grid .guide-card { display: none; }
+}
+@media (max-width: 760px) {
+  .fx-grid .guide-card { padding: 7px; }
+}
+.catalog-heading { margin-top: 44px; }
+.catalog-heading p { margin: 0 0 6px; }
+.catalog-heading h3 { font-size: clamp(27px, 3.4vw, 42px); }
+.catalog-heading + .catalog-toolbar { margin-top: 14px; }
+
+.engine-detail-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 480px) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(24px, 6vw, 78px);
+  margin-top: 24px;
+}
+
+.engine-detail-copy { grid-column: 2; grid-row: 1; }
+.engine-detail-copy h1 { font-size: clamp(42px, 6.2vw, 86px); }
+.engine-detail-copy .lede { margin-top: 12px; }
+.engine-detail-copy .label { margin-block: 0 12px; }
+.engine-view { grid-column: 1; grid-row: 1; margin: 0; }
+.engine-view .motion-head { margin-bottom: 0; }
+.engine-neighbors { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+
+@media (max-width: 850px) {
+  .engine-gallery-featured { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 690px) {
+  .engine-detail-grid { grid-template-columns: minmax(0, 480px); }
+  .engine-detail-copy, .engine-view { grid-column: auto; grid-row: auto; }
+  .engine-gallery-catalog { grid-template-columns: repeat(auto-fill, minmax(108px, 1fr)); }
+}
+
+@media (max-width: 430px) {
+  .engine-gallery-featured { gap: 9px; }
+  .engine-gallery-featured .engine-card { padding: 7px; }
+  .engine-gallery-featured .engine-card-note { font-size: 12px; }
+}
+
+/* Keep network waits distinguishable from a blank LCD. */
+.screen{position:relative}
+.screen:has(img:not([data-ready]))::after,.screen:has(img[data-ready="error"])::after{position:absolute;inset:0;display:grid;place-items:center;padding:20px;color:#aaa;font:11px/1.5 ui-monospace,monospace;letter-spacing:1px;text-align:center;content:"LOADING SCREEN…";pointer-events:none}
+.screen:has(img[data-ready="error"])::after{content:"SCREEN UNAVAILABLE · RELOAD TO RETRY"}

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="See JAZZY's FM-1 engine animations up close.">
+  <title>JAZZY — Engine animation</title>
+  <link rel="icon" href="jazzy-mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="firmware-links.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="engine-gallery.css?v=20261117.1">
+  <script type="module" src="engine.mjs?v=20261117.1"></script>
+<link rel="stylesheet" href="platform-navigation.css?v=navigation-20261116.2"><script src="platform-navigation.js?v=navigation-20261116.2" defer></script></head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="jr-site-header top"><a target="_top" class="jr-brand" href="https://jazzyrhythmer.github.io/jazzy/"><img src="https://jazzyrhythmer.github.io/jazzy/jazzy-mark.svg" width="27" height="27" alt=""><span>JAZZY</span><small>for FM-1</small></a><nav class="jr-section-nav" aria-label="Site sections"><a target="_top" data-section="overview" href="https://jazzyrhythmer.github.io/jazzy/">OVERVIEW</a><a target="_top" data-section="engines" href="https://jazzyrhythmer.github.io/jazzy/#engines">ENGINES</a><a target="_top" data-section="features" href="https://jazzyrhythmer.github.io/jazzy/#patterns">FEATURES</a><a target="_top" data-section="start" href="https://jazzyrhythmer.github.io/jazzy/installer/">GET STARTED</a><a target="_top" data-section="manual" href="https://jazzyrhythmer.github.io/jazzy/manual/">MANUAL</a><a target="_top" data-section="studio" href="https://jazzyrhythmer.github.io/jazzy/#support">STUDIO</a></nav><div class="jr-platform-switcher" role="navigation" aria-label="Firmware platforms"><div class="jr-platform-group" role="group" aria-label="Firmware for FM-1"><span class="jr-platform-label">FOR FM-1</span><div class="jr-platform-links"><a target="_top" href="https://jazzyrhythmer.github.io/jazzy/" aria-label="JAZZY for FM-1" aria-current="page">JAZZY</a><a target="_top" href="https://jazzyrhythmer.github.io/rhythmer/#home" aria-label="RHYTHMER for FM-1">RHYTHMER</a></div></div><div class="jr-platform-group" role="group" aria-label="Firmware for MPC Sample"><span class="jr-platform-label">FOR MPC SAMPLE</span><div class="jr-platform-links"><a target="_top" href="https://jazzyrhythmer.github.io/mpc-sample/#home" aria-label="RHYTHMER OS for MPC Sample">RHYTHMER</a></div></div></div></header>
+<main class="shell page engine-detail" id="main">
+  <a class="text-link" id="back-to-catalog" href="./#engine-catalog">← All engines</a>
+  <div class="engine-detail-grid" id="engine-detail" hidden>
+    <div class="engine-detail-copy">
+      <p class="label accent" id="engine-family"></p>
+      <h1 id="engine-name"></h1>
+      <p class="lede" id="engine-description"></p>
+      <p class="label" id="engine-sound-count"></p>
+      <p id="lxr-credit-link" hidden><a class="text-link" href="manual/#lxr-credits">Elixir / LXR-02 credits and license →</a></p>
+      <nav class="engine-neighbors" aria-label="Browse engine animations">
+        <a class="button" id="engine-previous"></a>
+        <a class="button" id="engine-next"></a>
+      </nav>
+    </div>
+    <figure class="engine-view">
+      <div class="screen"><img id="engine-animation" width="240" height="240" alt=""></div>
+      <figcaption class="motion-head">
+        <p class="label">FM-1 LCD / 240 × 240</p>
+        <button type="button" id="motion-toggle" class="chip" aria-pressed="false">Pause animations</button>
+      </figcaption>
+    </figure>
+  </div>
+  <p id="engine-not-found" hidden>Engine not found. Choose another animation from the engine gallery.</p>
+  <noscript><p>Enable JavaScript to view this engine’s animation.</p></noscript>
+</main>
+<footer class="shell foot"><span>JAZZY / ENGINE ROOM</span><a href="./#engine-catalog">All engines</a><a href="manual/">Manual</a><a href="installer/">Install</a><a href="manual/#lxr-credits">LXR credits</a></footer>
+</body>
+</html>

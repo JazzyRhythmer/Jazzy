@@ -201,6 +201,15 @@ jobs:
           tar -xzf JAZZY-installer-maintenance-20261116.1.tar.gz -C _site
           grep -F 'installer-20261116.1' _site/installer/install-safety.mjs
           python3 -c 'import json; d=json.load(open("_site/release.json")); assert d["sha256"]=="bd80190ca19df53e3de7a853da8e5ba70d7778c4ee6f6241d42b5a575526b913"'
+      - name: Keep engine previews visible while animations load
+        run: |
+          cp site-animation/* _site/
+          python3 - <<'PYCODE'
+          from pathlib import Path
+          p=Path('_site/index.html')
+          s=p.read_text().replace('home.mjs?v=20261111.1','home.mjs?v=20261117.1').replace('engine-gallery.css?v=guide-cards','engine-gallery.css?v=20261117.1')
+          p.write_text(s)
+          PYCODE
       - name: Apply shared platform navigation
         run: python3 site-navigation/apply.py _site jazzy
       - uses: actions/upload-pages-artifact@v4
