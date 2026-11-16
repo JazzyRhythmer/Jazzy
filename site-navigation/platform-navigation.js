@@ -13,3 +13,4 @@ function activeSection(current,links){
 function mark(){const links=[...document.querySelectorAll('.jr-section-nav a')],section=activeSection(new URL(location.href),links);for(const a of links){if(a.dataset.section===section)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')}}
 window.addEventListener('hashchange',()=>requestAnimationFrame(mark));window.addEventListener('load',mark);window.addEventListener('pageshow',mark);mark();
 })();
+// Navigation maintenance 20261116.2.
